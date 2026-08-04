@@ -1,8 +1,8 @@
-Create an euro banknote design proposal. Follow the same aspect ratio and color design as the 6 attached images, representing Design E you will take inspiration from
+Create an euro banknote design proposal.
 
 style: detailed, intricate, horizontale. a banknote that's readable at a glance and catches your intention as you read it, even without security features.
 
-the exercise is starical in object, but it should be executed perfectly seriously in substance. this reinforces the humor
+the official contest is over, and the exercise is satirical in object, but it should be executed perfectly seriously in substance. this reinforces the humor.
 
 Theme: Minecraft
 
@@ -36,7 +36,7 @@ obviously, "redstone" doesn't exist in real life (the proposal should explain "r
 
 20€ (blue, the design will take on a lighter, less saturated shade closer to diamon rather than deep blue): diamond ore
 
-could also be lapis lazuli ore (the proposal should acknowledge the threshold). diamond for 20€ is an interesting choice because it's obviously rare and expensive... (the proposal acknowledges this) unless you talk about industrial diamond. 20€ is practical bill for everyday, but serious usage. it's reliable. it's actually the most common note in circulation.
+could also be lapis lazuli ore (the proposal should acknowledge the threshold). diamond for 20€ is an interesting choice because it's obviously rare and expensive... (the proposal acknowledges this) unless you talk about industrial diamond, which could symbolize precision machining, and industrial excellence. 20€ is practical bill for everyday, but serious usage. it's reliable. it's actually the most common note in circulation.
 
 50€ (copper): copper ore OR iron ore. both colors match. the proposal should consider both and select one.
 
@@ -46,9 +46,9 @@ could also be lapis lazuli ore (the proposal should acknowledge the threshold). 
 
 ---
 
-each ore is selected to matche the required dominant color
+each ore is selected to match the required dominant color
 
-overarching idea: the design is obviously satirical, but the explanations, concepts, and rationale is polished. it explains a coherent narrative: Minecraft as appealing to younger audiences, part of the global cultural connective tissue... it's not "minecraft on bills lol" it's "minecraft as a design grammar for how the european union presents itself". it presents its own history, great achievements, scientists, through the mechanics. because yes: each ore is anchored in the real uses of the material behind it (with the exception of redstone where we use a reasonable interpretation of what "redstone" represents), which is explained through game references to mechanics, common usages and remarkable player creations
+overarching idea: the design is satirical, but the explanations, concepts, and rationale are polished. it explains a coherent narrative: Minecraft as appealing to younger audiences, part of the global cultural connective tissue... it's not "minecraft on bills lol" it's "minecraft as a design grammar for how the european union presents itself". it presents its own history, great achievements, scientists, through the mechanics. because yes: each ore is anchored in the real uses of the material behind it (with the exception of redstone where we use a reasonable interpretation of what "redstone" represents), which is explained through game references to mechanics, common usages and remarkable player creations
 
 ---
 
@@ -186,7 +186,7 @@ A banknote should not simply show something beautiful.
 It should make value visible.
 ```
 
-banknotes images of design E are attached. yes, i know the recto is mainly faces, but the inspiration I want from it is is from the level of detail. the depth. especially on the verso. because it presents this scene, that expresses a concept, a value, an era, all around the front personality. culture, science, the enlightenment, architecture... and how it shapes us, to this day.
+I want to take inspiration from design E, which is explained in the input documents. yes, i know the recto is mainly faces, but the inspiration I want from it is is from the level of detail. the depth. especially on the verso. because it presents this scene, that expresses a concept, a value, an era, all around the front personality. culture, science, the enlightenment, architecture... and how it shapes us, to this day.
 
 that's what i want: Minecraft as a design language to express the european values, history, structuring eras, and great achievements, through the banknotes.
 
