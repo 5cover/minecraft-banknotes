@@ -186,7 +186,9 @@ A banknote should not simply show something beautiful.
 It should make value visible.
 ```
 
-banknotes images of design E (which i want to take inspiration from in its approach and level of detial) are attached.
+banknotes images of design E are attached. yes, i know the recto is mainly faces, but the inspiration I want from it is is from the level of detail. the depth. especially on the verso. because it presents this scene, that expresses a concept, a value, an era, all around the front personality. culture, science, the enlightenment, architecture... and how it shapes us, to this day.
+
+that's what i want: Minecraft as a design language to express the european values, history, structuring eras, and great achievements, through the banknotes.
 
 inputs:
 

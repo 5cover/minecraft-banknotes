@@ -227,7 +227,7 @@ function createOutputFilename(url: URL, index: number): string {
   const extension = sanitizeExtension(parsed.ext)
   const fingerprint = createHash('sha256').update(url.href).digest('hex').slice(0, 10)
 
-  return `${String(index + 1).padStart(3, '0')}-${baseName}-${fingerprint}${extension}`
+  return `${baseName}-${fingerprint}${extension}`
 }
 
 function sanitizeFilename(value: string): string {
