@@ -47,7 +47,7 @@ Use Minecraft-derived pixel lettering for the large denomination and for `EURO Î
 
 The European flag, euro scripts, map, and signature field must appear integrated into the note through the same paper and print treatment. The flag must not appear as a flat saturated rectangle pasted over the scene.
 
-Use one consistent Europe-map silhouette, projection, orientation, and relative scale across all twelve images.
+Dscribe consistent silhouette, projection, orientation, and relative scale for every common component in the prompt for each of the twelve images.
 
 ## 3. Common recto composition
 
