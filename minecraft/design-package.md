@@ -1,8 +1,6 @@
-# Crafting Europe
+# Layered professional design package specification
 
-## Layered professional design package specification
-
-### Purpose
+## Purpose
 
 This document defines the repeatable construction package for the final twelve banknote designs.
 
