@@ -1,0 +1,251 @@
+# yaml-language-server: $schema=./proposal-lint.schema.yaml
+
+summary:
+  findings:
+    total: 3
+    by_category:
+      unresolved_alternative: 1
+      negative_to_positive_refactor: 1
+      unspecified_cardinality: 1
+    by_priority:
+      high: 2
+      medium: 1
+      low: 0
+    by_confidence:
+      high: 2
+      medium: 1
+      low: 0
+
+  reviewed_scene_specifications: 12
+  choice_overload_scenes: 1
+
+  instruction_polarity:
+    positive_requirements: 84
+    negative_restrictions: 39
+    note: >
+      Approximate counts. Negative clauses inside historical rationale and
+      conceptual comparisons were not treated as equivalent to executable
+      prohibitions.
+
+  general_observations:
+    - >
+      Most final prompts are resolved, but one verso still offers alternative
+      architectural protagonists.
+    - >
+      Several old "avoid clutter" clauses can be replaced by the already
+      established hierarchy rule.
+
+findings:
+  PL1:
+    title: Competing protagonists in final verso prompt
+    category: unresolved_alternative
+    priority: high
+
+    location:
+      file: proposal.md
+      section: "€50 > Verso > Prompt"
+      anchor: "archival repository or cultural preservation hall"
+
+    related_locations:
+      - file: proposal.md
+        section: "Continuity between recto and verso"
+        anchor: "€50"
+
+    detector:
+      proxies:
+        - 'lexical: "or" joins two different architectural subjects'
+        - "semantic: both alternatives can independently become the dominant composition"
+      confidence: high
+      false_positive_risk: >
+        "Or" is often harmless in exclusions or conceptual prose, but here it
+        directly joins two candidate protagonists in an executable prompt.
+      false_negative_risk: >
+        Similar branching could be expressed across separate sentences without
+        using an explicit alternative marker.
+
+    current: >
+      The dominant subject is an archival repository or cultural preservation hall.
+
+    issue: >
+      The prompt leaves the main architecture unresolved, allowing independent
+      generations to choose incompatible scene types.
+
+    reveals: >
+      The proposal has not completed the art-direction decision before handing
+      the scene to generation.
+
+    review_questions:
+      - "Which architecture is actually the verso subject?"
+      - "Does the chosen subject answer the recto rather than merely broaden the theme?"
+      - "Should the rejected branch survive anywhere outside the executable prompt?"
+
+    rationale: >
+      The dominant subject controls silhouette, viewpoint, density, and the
+      recto-verso relationship. Leaving it unresolved creates high visual variance.
+
+    options:
+      A:
+        action: select
+        description: >
+          Select the backstage technical area as the sole verso subject and
+          remove the archive/preservation alternatives from executable text.
+        expected_effect:
+          - "fixes the dominant silhouette"
+          - "strengthens recto-verso causality"
+          - "reduces cross-run branching"
+        risk: low
+
+      B:
+        action: keep
+        description: >
+          Keep both alternatives intentionally and treat visual variation as
+          acceptable for this denomination.
+        expected_effect:
+          - "preserves current conceptual breadth"
+        risk: high
+
+    recommendation: A
+
+    quality_effect:
+      is: improves_determinism
+      because: >
+        The selected scene can be specified with one protagonist and one spatial logic.
+
+    decision: ~
+    note: ~
+    applied: false
+
+  PL2:
+    title: Vague anti-clutter prohibition duplicates a positive hierarchy rule
+    category: negative_to_positive_refactor
+    priority: medium
+
+    location:
+      file: proposal.md
+      section: "Common visual direction"
+      anchor: "Do not make the scene too busy"
+
+    detector:
+      proxies:
+        - 'negative imperative: "Do not"'
+        - 'vague evaluator: "too busy"'
+        - "duplicate positive invariant elsewhere: one dominant subject and at most one secondary subject"
+      confidence: high
+      false_positive_risk: >
+        A broad prohibition can be useful as an executive summary, but here it
+        adds no operational information beyond the stronger positive rule.
+      false_negative_risk: >
+        Equivalent vague negations may use wording such as "avoid clutter" or
+        "keep things simple" and require semantic matching.
+
+    current: "Do not make the scene too busy."
+
+    issue: >
+      The prohibition is not independently testable and duplicates a stronger
+      positive composition requirement.
+
+    reveals: >
+      A historical correction has remained in the proposal after its underlying
+      problem was already abstracted into a better rule.
+
+    review_questions:
+      - "Does this sentence add any behavior not already implied by the hierarchy rule?"
+      - "Would removing it make the target less clear?"
+
+    rationale: >
+      Redundant negative sediment increases prompt length and describes the edge
+      of the target instead of strengthening the target itself.
+
+    options:
+      A:
+        action: remove
+        description: >
+          Remove the vague prohibition and rely on the explicit hierarchy rule.
+        expected_effect:
+          - "reduces redundant negative context"
+          - "keeps the operational rule as the source of truth"
+        risk: low
+
+      B:
+        action: rewrite_positive
+        description: >
+          Replace the sentence with a concise restatement of the hierarchy rule
+          if local repetition is useful for downstream prompt extraction.
+        replacement: >
+          The scene has one dominant subject and at most one secondary subject.
+        expected_effect:
+          - "makes the local instruction actionable"
+        risk: low
+
+    recommendation: A
+
+    quality_effect:
+      is: reduces_redundancy
+      because: >
+        The proposal retains the enforceable invariant without preserving the
+        vague historical prohibition.
+
+    decision: ~
+    note: ~
+    applied: false
+
+  PL3:
+    title: Secondary satellite-dish count is unstable
+    category: unspecified_cardinality
+    priority: high
+
+    location:
+      file: proposal.md
+      section: "€10 > Verso > Prompt"
+      anchor: "secondary dishes"
+
+    detector:
+      proxies:
+        - "plural visible object without count"
+        - "secondary dishes materially affect silhouette and density"
+      confidence: medium
+      false_positive_risk: >
+        Plurals often describe low-value background detail where exact counts are
+        unnecessary. Here the dishes are major compositional objects.
+      false_negative_risk: >
+        Cardinality instability can also occur through vague singular collectives
+        such as "an array of antennas."
+
+    issue: >
+      The number of large secondary dishes is unspecified, so separate runs can
+      produce materially different site density.
+
+    reveals: >
+      The proposal is precise about the dominant dish but leaves a high-leverage
+      secondary quantity open.
+
+    review_questions:
+      - "How many secondary dishes should appear?"
+      - "Does the count help distinguish the high-angle verso from the singular recto?"
+
+    rationale: >
+      Large parabolic dishes strongly affect the site's silhouette and balance,
+      making their count worth fixing.
+
+    options:
+      A:
+        action: specify
+        description: "Specify exactly two secondary dishes."
+        replacement: >
+          One dominant parabolic dish anchors the site, with exactly two smaller
+          secondary dishes placed behind it.
+        expected_effect:
+          - "stabilizes composition"
+          - "preserves the one-plus-two hierarchy across generations"
+        risk: low
+
+    recommendation: A
+
+    quality_effect:
+      is: improves_consistency
+      because: >
+        Independent generations receive the same large-object count.
+
+    decision: ~
+    note: ~
+    applied: false

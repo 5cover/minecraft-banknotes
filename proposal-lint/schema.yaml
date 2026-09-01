@@ -1,0 +1,348 @@
+# yaml-language-server: $schema=https://json-schema.org/draft/2020-12/schema
+$title: Proposal lint review
+description: >
+  Structured lint review of a design proposal. Analysis identifies likely
+  specification smells, a human fills decision/note fields, and a separate
+  application step applies only explicitly approved findings.
+type: object
+required:
+  - summary
+  - findings
+additionalProperties: false
+
+properties:
+  summary:
+    type: object
+    required:
+      - findings
+      - reviewed_scene_specifications
+      - choice_overload_scenes
+      - instruction_polarity
+    additionalProperties: false
+    properties:
+      findings:
+        type: object
+        required:
+          - total
+          - by_category
+          - by_priority
+          - by_confidence
+        additionalProperties: false
+        properties:
+          total:
+            type: integer
+            minimum: 0
+          by_category:
+            type: object
+            additionalProperties:
+              type: integer
+              minimum: 0
+          by_priority:
+            type: object
+            required: [high, medium, low]
+            additionalProperties: false
+            properties:
+              high: {type: integer, minimum: 0}
+              medium: {type: integer, minimum: 0}
+              low: {type: integer, minimum: 0}
+          by_confidence:
+            type: object
+            required: [high, medium, low]
+            additionalProperties: false
+            properties:
+              high: {type: integer, minimum: 0}
+              medium: {type: integer, minimum: 0}
+              low: {type: integer, minimum: 0}
+
+      reviewed_scene_specifications:
+        type: integer
+        minimum: 0
+        description: Number of final prompts or concrete scene specifications reviewed.
+
+      choice_overload_scenes:
+        type: integer
+        minimum: 0
+        description: Number of scenes flagged for several simultaneously unresolved high-leverage choices.
+
+      instruction_polarity:
+        type: object
+        required:
+          - positive_requirements
+          - negative_restrictions
+        additionalProperties: false
+        properties:
+          positive_requirements:
+            type: integer
+            minimum: 0
+          negative_restrictions:
+            type: integer
+            minimum: 0
+          note:
+            type: string
+            description: >
+              Diagnostic interpretation only. This is not a score and must
+              explain important counting limitations.
+
+      general_observations:
+        type: array
+        items:
+          type: string
+
+  findings:
+    type: object
+    description: Map of independently reviewable lint findings.
+    propertyNames:
+      pattern: '^PL\d+$'
+    additionalProperties:
+      $ref: '#/$defs/finding'
+
+$defs:
+  location:
+    type: object
+    required:
+      - file
+      - section
+    additionalProperties: false
+    properties:
+      file:
+        type: string
+        minLength: 1
+      section:
+        type: string
+        minLength: 1
+      anchor:
+        type: string
+        description: Short unique textual or structural locator.
+
+  detector:
+    type: object
+    required:
+      - proxies
+      - confidence
+      - false_positive_risk
+      - false_negative_risk
+    additionalProperties: false
+    properties:
+      proxies:
+        type: array
+        minItems: 1
+        items:
+          type: string
+        description: >
+          Lexical, structural, comparative, or semantic signals that led to
+          inspection. These are evidence, not automatic violations.
+      confidence:
+        type: string
+        enum: [high, medium, low]
+      false_positive_risk:
+        type: string
+        minLength: 1
+      false_negative_risk:
+        type: string
+        minLength: 1
+
+  quality_effect:
+    type: object
+    required:
+      - is
+      - because
+    additionalProperties: false
+    properties:
+      is:
+        type: string
+        enum:
+          - improves_determinism
+          - improves_clarity
+          - reduces_redundancy
+          - improves_consistency
+          - mixed
+          - neutral
+      because:
+        type: string
+        minLength: 1
+
+  option:
+    type: object
+    required:
+      - action
+      - description
+      - expected_effect
+      - risk
+    additionalProperties: false
+    properties:
+      action:
+        type: string
+        enum:
+          - select
+          - remove
+          - replace
+          - rewrite_positive
+          - consolidate
+          - specify
+          - rank
+          - synchronize
+          - centralize
+          - move
+          - keep
+          - other
+      description:
+        type: string
+        minLength: 1
+      replacement:
+        type: string
+        description: >
+          Optional exact replacement text when a local rewrite can be safely
+          specified during lint analysis.
+      expected_effect:
+        type: array
+        minItems: 1
+        items:
+          type: string
+      risk:
+        type: string
+        enum: [low, medium, high]
+
+  finding:
+    type: object
+    required:
+      - title
+      - category
+      - priority
+      - location
+      - detector
+      - issue
+      - reveals
+      - review_questions
+      - rationale
+      - options
+      - recommendation
+      - decision
+      - note
+      - applied
+    additionalProperties: false
+    properties:
+      title:
+        type: string
+        minLength: 1
+        description: Short human-readable heading for the finding.
+
+      category:
+        type: string
+        enum:
+          - unresolved_alternative
+          - soft_optionality
+          - weak_preference
+          - negative_sediment
+          - broad_negation
+          - contrastive_overdefinition
+          - enumeration_pressure
+          - additive_accumulation
+          - missing_representation_channel
+          - abstract_visual_noun
+          - concept_leakage
+          - unspecified_hierarchy
+          - unspecified_cardinality
+          - unspecified_camera
+          - camera_or_spatial_alternative
+          - relational_vagueness
+          - unbounded_modifier
+          - style_without_construction
+          - rendering_ambiguity
+          - recto_verso_duplication
+          - cross_denomination_sameness
+          - cross_denomination_rendering_drift
+          - stale_concept_residue
+          - cross_section_contradiction
+          - duplicated_rule
+          - repeated_exception_handling
+          - false_precision
+          - missing_precision
+          - workflow_leakage
+          - proposal_leakage
+          - negative_to_positive_refactor
+          - choice_budget_overload
+          - noun_hierarchy_overload
+          - normative_polarity
+          - resolution_asymmetry
+          - other
+
+      priority:
+        type: string
+        enum: [high, medium, low]
+
+      location:
+        $ref: '#/$defs/location'
+
+      related_locations:
+        type: array
+        items:
+          $ref: '#/$defs/location'
+
+      detector:
+        $ref: '#/$defs/detector'
+
+      current:
+        type: string
+        description: >
+          Optional excerpt of the current proposal when useful for judging the
+          finding. Keep it focused.
+
+      issue:
+        type: string
+        minLength: 1
+        description: Concise diagnosis of the concrete specification problem.
+
+      reveals:
+        type: string
+        minLength: 1
+        description: >
+          Underlying design or prompting problem the detected pattern may reveal.
+
+      review_questions:
+        type: array
+        minItems: 1
+        items:
+          type: string
+
+      rationale:
+        type: string
+        minLength: 1
+        description: >
+          Why this matters for proposal quality, generation stability, visual
+          hierarchy, consistency, maintainability, or prompt density.
+
+      options:
+        type: object
+        minProperties: 1
+        propertyNames:
+          pattern: '^[A-Z]$'
+        additionalProperties:
+          $ref: '#/$defs/option'
+
+      recommendation:
+        type: string
+        pattern: '^[A-Z]$'
+        description: Advisory option key. Must correspond to an option.
+
+      quality_effect:
+        $ref: '#/$defs/quality_effect'
+
+      decision:
+        type:
+          - string
+          - 'null'
+        description: >
+          Human decision. Expected values: option key such as A/B/C, reject,
+          defer, custom, or null. Analysis must leave this null.
+
+      note:
+        type:
+          - string
+          - 'null'
+        description: >
+          Human natural-language refinement, correction, condition, or custom
+          instruction. Analysis must leave this null.
+
+      applied:
+        type: boolean
+        default: false

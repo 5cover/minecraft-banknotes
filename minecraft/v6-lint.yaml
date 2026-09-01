@@ -1,0 +1,1192 @@
+summary:
+  total_findings: 18
+  counts_by_category:
+    missing_precision_high_leverage: 5
+    cross_section_contradiction: 2
+    stale_concept_residue: 2
+    cross_denomination_sameness: 1
+    unresolved_alternatives: 2
+    choice_budget_overload: 2
+    human_presence: 1
+    duplicated_rules: 1
+    negative_sediment: 1
+    false_precision: 1
+  counts_by_priority:
+    high: 8
+    medium: 8
+    low: 2
+  counts_by_detector_confidence:
+    high: 14
+    medium: 4
+    low: 0
+  prompts_or_scene_specifications_reviewed: 12
+  scenes_with_unresolved_high_leverage_choice_overload: 5
+  approximate_instruction_counts:
+    positive: 289
+    negative: 101
+    method: >
+      Heuristic sentence-level count of positive prescriptive constructions
+      versus negative or exclusionary constructions. The counts are diagnostic,
+      not a quality score.
+  general_observations:
+    - >
+      The proposal has explicit representation channels for all six denominations
+      and gives every reverse a named dominant subject. This is a strong source
+      specification foundation.
+    - >
+      The largest remaining stability risks are camera definition, common-layout
+      geometry, cross-section source-of-truth drift, and the amount of secondary
+      content permitted inside several reverses.
+    - >
+      The common rendering system is comparatively well centralised. The proposal
+      explicitly seeks one rendering system across all twelve faces and assigns
+      different roles to the Minecraft scene and the monetary framework.
+    - >
+      Negative instructions are numerous, but many are specific and useful.
+      The larger issue is repetition: several exclusions already follow from
+      positive Minecraft-native construction rules and recur again in local
+      denomination sections.
+    - >
+      The proposal appropriately separates jury-facing material from generation
+      prompts and production procedures, reducing workflow leakage.
+findings:
+  - id: PL-001
+    category: missing_precision_high_leverage
+    detector_family: '28. Missing precision in high-leverage variables'
+    priority: high
+    detector_confidence: high
+    detected: >
+      The series-wide banknote layout is defined through relative fields,
+      alignments, and repeated positions, but the proposal does not give a
+      canonical proportional grid, field occupancy, ore-label coordinates, or
+      denomination aspect-ratio table. The proposal instead points to the
+      current euro formats and repeatedly describes positions as stable or
+      proportional.
+    proxies:
+      - 'three principal recto fields'
+      - 'stable proportional alignments'
+      - 'ore-label position and relative scale remain fixed'
+      - 'current euro series proportions are referenced rather than reproduced'
+    false_positive_risk: >
+      A separate technical brief or layout master may already contain these
+      values. If downstream generation always receives that master, the proposal
+      itself does not need to repeat them.
+    false_negative_risk: >
+      Additional layout variables may also be underdefined, including exact
+      institutional-field width, map field extent, numeral occupancy, and quiet
+      zone dimensions.
+    underlying_problem: >
+      A downstream system reading the proposal alone must invent the geometry
+      of a supposedly fixed series framework.
+    why_it_matters: >
+      Layout differences affect denomination recognition, ore-label placement,
+      landscape crop, institutional balance, and series coherence before any
+      scene detail is considered.
+    review_questions:
+      - 'Is there one canonical layout master that later generation always receives?'
+      - 'Can the fixed fields be reconstructed from this proposal without consulting an external source?'
+      - 'Which proportional relationships materially affect every generated face?'
+    options:
+      - id: A
+        action: >
+          Add one canonical proportional layout record covering denomination
+          aspect ratios, the three principal fields, fixed alignment datums,
+          and ore-label position and scale.
+      - id: B
+        action: >
+          Keep the proposal relational, but designate an external technical
+          layout master as the authoritative source for all geometry and state
+          that later prompts inherit it unchanged.
+      - id: C
+        action: >
+          Leave unchanged if no image-generation stage is expected to infer
+          banknote geometry from this proposal alone.
+    recommended_option: A
+    expected_effect: >
+      Converts repeated relational claims about fixed geometry into one usable
+      source of truth and reduces whole-series layout drift.
+    locations:
+      - file: 'proposal-v6(1).md :contentReference[oaicite:0]{index=0}'
+        section: '9.1 Format and proportion; 9.2 Shared recto composition; 9.5 Shared alignments; 9.7 What remains fixed and what changes'
+        anchor: 'proportional grid, three principal fields, stable proportional alignments'
+        proposal_lines: '488-602'
+        evidence: 'The proposal specifies fixed fields and alignments but supplies them relationally. :contentReference[oaicite:1]{index=1} :contentReference[oaicite:2]{index=2}'
+        related_locations:
+          - '10.1-10.2, ore-label position, diameter, and scale'
+    decision: A
+    note: >
+      here is the table. It is already in an external master that accompanies the prompt, but you're right that inclusion is relevant for the primary proposal. Here is the table from the workflow; adapt it
+      | File               | Side       | Aspect ratio | Scale by |          Size |
+      | ------------------ | ---------- | ------------ | -------- | ------------: |
+      | `EUR005_recto.png` | €5 recto   | 60:31        | 30       | 1800 × 930 px |
+      | `EUR005_verso.png` | €5 verso   | 60:31        | 30       | 1800 × 930 px |
+      | `EUR010_recto.png` | €10 recto  | 127:67       | 14       | 1778 × 938 px |
+      | `EUR010_verso.png` | €10 verso  | 127:67       | 14       | 1778 × 938 px |
+      | `EUR020_recto.png` | €20 recto  | 133:72       | 13       | 1729 × 936 px |
+      | `EUR020_verso.png` | €20 verso  | 133:72       | 13       | 1729 × 936 px |
+      | `EUR050_recto.png` | €50 recto  | 20:11        | 85       | 1700 × 935 px |
+      | `EUR050_verso.png` | €50 verso  | 20:11        | 85       | 1700 × 935 px |
+      | `EUR100_recto.png` | €100 recto | 147:82       | 11       | 1617 × 902 px |
+      | `EUR100_verso.png` | €100 verso | 147:82       | 11       | 1617 × 902 px |
+      | `EUR200_recto.png` | €200 recto | 153:82       | 11       | 1683 × 902 px |
+      | `EUR200_verso.png` | €200 verso | 153:82       | 11       | 1683 × 902 px |
+
+  - id: PL-002
+    category: missing_precision_high_leverage
+    detector_family: '14. Unspecified camera or viewpoint'
+    priority: high
+    detector_confidence: high
+    detected: >
+      All six rectos identify environments and visible features, but none fixes
+      a local camera height, viewing direction, or major crop. The shared camera
+      rule says the recto should often resemble a selected in-game view, which
+      is a preference rather than a camera specification.
+    proxies:
+      - 'should often feel close to an in-game view'
+      - 'visible cliff face'
+      - 'visible cavern surface'
+      - 'high mountain landscape'
+      - 'no recurring camera height or azimuth field in denomination sections'
+    false_positive_risk: >
+      Minecraft terrain morphology and the requirement for visible ore exposure
+      already constrain some viewpoints, and deliberate camera variation may be
+      part of denomination differentiation.
+    false_negative_risk: >
+      Even where the environment implies an angle, crop direction and foreground
+      allocation can still vary enough to create materially different silhouettes.
+    underlying_problem: >
+      The recto specifications determine what exists but leave the image model
+      to decide how the landscape is viewed.
+    why_it_matters: >
+      Camera choice controls ore visibility, terrain silhouette, negative space,
+      depth, and how much of the landscape survives at banknote scale.
+    review_questions:
+      - 'What camera view makes each recto recognisable before colour is considered?'
+      - 'Would an eye-level, elevated, or lateral interpretation all satisfy the current wording?'
+      - 'Which direction must the exposed ore face relative to the frame?'
+    options:
+      - id: A
+        action: >
+          Give each recto a deliberate camera height, view direction, and major
+          crop while preserving freedom in minor terrain details.
+      - id: B
+        action: >
+          Define a small set of permitted recto camera families and assign one
+          family to each denomination.
+      - id: C
+        action: >
+          Leave camera selection to the generation workflow and explicitly mark
+          it as an intentional variable rather than an unstated one.
+    recommended_option: A
+    expected_effect: >
+      Stabilises recto silhouettes and ore exposure while preserving natural
+      variation inside each landscape.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '11.2 Terrain and perspective'
+        anchor: 'recto camera should often feel close to an in-game view'
+        proposal_lines: '747-761'
+        evidence: 'The shared recto camera direction remains qualitative. :contentReference[oaicite:3]{index=3}'
+        related_locations:
+          - '15.3 €5 Recto'
+          - '16.4 €10 Recto'
+          - '17.4 €20 Recto'
+          - '18.3 €50 Recto'
+          - '19.4 €100 Recto'
+          - '20.3 €200 Recto'
+    decision: A
+    note: >
+      Infer from the context for each recto. The ore remains the object of emphasis in every shot. Something like this
+      Coal : outside, mountain, so aerial but close, coal in a mountainside
+      Redstone : inside, deepslate cavern, ground level, like player perspective
+      Lapis : semi inside, crevasse, like player perspective
+      Copper : inside, stone cavern, like player perspective
+      Emerald : outside, mountain, higher than coal, more aerial
+      Gold : outside, surface, low aerial
+
+  - id: PL-003
+    category: missing_precision_high_leverage
+    detector_family: '14. Unspecified camera or viewpoint'
+    priority: high
+    detector_confidence: high
+    detected: >
+      The reverses share an elevated oblique camera family, but the proposal
+      explicitly permits variation in angle and distance and does not assign
+      denomination-specific viewing directions. Several dominant silhouettes,
+      especially the bridge, market square, and reserve complex, change
+      substantially with azimuth.
+    proxies:
+      - 'elevated oblique viewpoint'
+      - 'broad enough and close enough'
+      - 'angle or distance need not be identical'
+      - 'local reverse sections rarely state viewing direction'
+    false_positive_risk: >
+      The common camera family may be sufficient if a human art director selects
+      compositions interactively rather than generating scenes independently.
+    false_negative_risk: >
+      Camera freedom can interact with object count and architectural layout,
+      creating more variation than camera wording alone suggests.
+    underlying_problem: >
+      A series-wide camera family is defined, but the local pose needed to secure
+      each denomination's intended silhouette remains unresolved.
+    why_it_matters: >
+      The same bridge can read as a long horizontal span or a foreshortened
+      gateway; the same market can read as a square, street, or settlement;
+      these are materially different banknote compositions.
+    review_questions:
+      - 'Which side of each dominant subject faces the viewer?'
+      - 'Is the intended silhouette preserved across the full permitted camera family?'
+      - 'Should camera variation be a series feature or only a small local adjustment?'
+    options:
+      - id: A
+        action: >
+          Retain the elevated-oblique series rule and add a denomination-specific
+          camera direction and crop for each reverse.
+      - id: B
+        action: >
+          Define a narrower common camera envelope with explicit orientation
+          constraints for subjects whose silhouettes are view-dependent.
+      - id: C
+        action: >
+          Leave unchanged if the downstream workflow tests several camera
+          candidates and selects one against a fixed silhouette reference.
+    recommended_option: A
+    expected_effect: >
+      Preserves the common spatial grammar while making each reverse reproducible
+      enough to remain recognisable across independent generations.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '9.4 Verso hierarchy and shared viewpoint; 11.2 Terrain and perspective'
+        anchor: 'all six reverses use an elevated oblique viewpoint'
+        proposal_lines: '522-541, 747-761'
+        evidence: 'The camera family is explicit, while local angle and distance remain variable. :contentReference[oaicite:4]{index=4} :contentReference[oaicite:5]{index=5}'
+        related_locations:
+          - '15.4-20.4 denomination verso sections'
+    decision: A
+    note: >
+      Infer from the context for each recto. The ore remains the object of emphasis in every shot.
+  - id: PL-004
+    category: cross_section_contradiction
+    detector_family: '24. Cross-section contradiction'
+    priority: high
+    detector_confidence: high
+    detected: >
+      The €10 canonical table and earlier series language identify an automation
+      and logic hall, while the denomination section describes the mechanisms
+      as a coherent campus containing multiple application zones. Hall and
+      campus imply different dominant massing, circulation, object count, and
+      silhouette.
+    proxies:
+      - 'automation and logic hall'
+      - 'large redstone automation build'
+      - 'arranged into a coherent campus'
+      - 'multiple secondary applications'
+    false_positive_risk: >
+      Campus may have been intended as a loose synonym for a large hall with
+      attached service areas.
+    false_negative_risk: >
+      Other summary references to research spaces and distributed systems may
+      reinforce the larger campus interpretation even when they do not use that
+      noun.
+    underlying_problem: >
+      Two competing spatial archetypes act as sources of truth for the same
+      reverse.
+    why_it_matters: >
+      Independent generation can produce either one legible dominant building
+      or a dispersed group of buildings, defeating the stated goal of one
+      unmistakable centre of gravity.
+    review_questions:
+      - 'Is the €10 silhouette one principal hall or a multi-building campus?'
+      - 'Which applications must be inside the dominant structure?'
+      - 'Which wording is canonical for downstream scene generation?'
+    options:
+      - id: A
+        action: >
+          Select the hall as the canonical dominant structure and subordinate
+          application zones within or immediately around it.
+      - id: B
+        action: >
+          Select the campus as canonical and update the series table, summaries,
+          and recognition language to describe that broader spatial type.
+    recommended_option: A
+    expected_effect: >
+      Restores one dominant spatial archetype and reduces ambiguity in density,
+      silhouette, and circulation.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '9.4 Verso hierarchy and shared viewpoint'
+        anchor: '€10 automation and logic hall'
+        proposal_lines: '530-539'
+        evidence: 'The canonical table names a hall. :contentReference[oaicite:6]{index=6}'
+        related_locations:
+          - '16.5 €10 Verso, lines 995-1008: local scene becomes a coherent campus. :contentReference[oaicite:7]{index=7}'
+    decision: A
+    note: null
+
+  - id: PL-005
+    category: cross_section_contradiction
+    detector_family: '24. Cross-section contradiction'
+    priority: high
+    detector_confidence: high
+    detected: >
+      The €50 reverse is locally defined as a major bridge and public-service
+      span with a limited settlement, but the following historical layer says
+      the meanings are distributed through the city and that the principal
+      subject is a network inside and around architecture rather than one
+      dominant structure.
+    proxies:
+      - 'major bridge and public-service span'
+      - 'long span forms the dominant silhouette'
+      - 'surrounding settlement remains limited'
+      - 'meanings are distributed through the city'
+      - 'principal subject is the network inside and around architecture'
+    false_positive_risk: >
+      The word city may only be conceptual shorthand for the civic system
+      connected by the bridge.
+    false_negative_risk: >
+      The recognition summary also simplifies the denomination as copper
+      supporting a city, which can further bias downstream interpretation away
+      from the bridge.
+    underlying_problem: >
+      The denomination has two possible protagonists: a bridge span or a diffuse
+      urban infrastructure network.
+    why_it_matters: >
+      Those choices yield different silhouettes, hierarchy, density, camera
+      needs, and denomination recognition.
+    review_questions:
+      - 'Is the bridge itself the protagonist, or is it merely one part of a city-wide network?'
+      - 'Should the settlement ever occupy enough area to read as a city?'
+      - 'Which statement controls image generation when the two sections disagree?'
+    options:
+      - id: A
+        action: >
+          Keep the bridge span as the canonical protagonist and make the
+          historical layer describe meanings visible on the span and its
+          approaches.
+      - id: B
+        action: >
+          Redefine the denomination around a distributed infrastructure network
+          and update the dominant-subject table and recognition claims
+          accordingly.
+    recommended_option: A
+    expected_effect: >
+      Preserves the already-defined long-span silhouette and prevents the €50
+      from drifting into another broad settlement scene.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '18.4 Verso; 18.5 European historical layer'
+        anchor: 'bridge silhouette versus meanings distributed through the city'
+        proposal_lines: '1193-1213'
+        evidence: 'The two adjacent sections state competing centres of gravity. :contentReference[oaicite:8]{index=8}'
+        related_locations:
+          - '9.4 dominant verso table, €50 bridge and public-service span'
+          - '24 Recognition and public comprehension, copper supports a city'
+    decision: A
+    note: null
+
+  - id: PL-006
+    category: stale_concept_residue
+    detector_family: '23. Stale concept residue'
+    priority: high
+    detector_confidence: high
+    detected: >
+      The cross-denomination continuity section introduces one required-looking
+      visual reference inside every note that is absent or not clearly
+      canonical in the corresponding denomination scene specifications:
+      signal mechanism, books and notation, copper-system diagrams, emerald
+      market, gold reserve, and coal-fired furnace.
+    proxies:
+      - 'each note contains one controlled reference to the next stage'
+      - 'six denomination-specific visual additions stated outside the local scene records'
+      - 'local close-reading sections do not consistently repeat these additions'
+    false_positive_risk: >
+      These may be intended as optional close-reading details rather than
+      required scene content.
+    false_negative_risk: >
+      Other summary tables also introduce secondary forms such as industrial
+      terraces, converging roads, observatory functions, and civic beacon
+      language that may not be fully canonical locally.
+    underlying_problem: >
+      Required visual content is being specified in a secondary continuity
+      chapter rather than in one canonical denomination record.
+    why_it_matters: >
+      A generator or reviewer using only the local denomination section may omit
+      the continuity reference, while another using the continuity chapter may
+      add it and increase scene density.
+    review_questions:
+      - 'Are all six continuity references mandatory visible details?'
+      - 'If mandatory, where is their hierarchy and scale specified?'
+      - 'Should one canonical denomination record own these details?'
+    options:
+      - id: A
+        action: >
+          Treat each continuity reference as a required subordinate detail and
+          move or mirror it into the denomination's canonical scene record with
+          explicit hierarchy.
+      - id: B
+        action: >
+          Make the continuity cycle conceptual only and state that these examples
+          are not required visible elements.
+      - id: C
+        action: >
+          Remove the six visual references if the series progression is already
+          sufficiently legible without them.
+    recommended_option: A
+    expected_effect: >
+      Eliminates hidden scene requirements and creates a single source of truth
+      for each denomination.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '22. Continuity across denominations'
+        anchor: 'each note contains one controlled reference to the next stage'
+        proposal_lines: '1455-1473'
+        evidence: 'Six denomination-specific continuity objects are introduced here. :contentReference[oaicite:9]{index=9}'
+        related_locations:
+          - '15.4-20.6 denomination scene and close-reading sections'
+          - '21. Continuity between recto and verso'
+    decision: other
+    note: Keep the cross-denomination continuity section centralized. The continuity references are intentionally transversal and should remain required across the six-note sequence rather than being duplicated inside each denomination specification. Reword the section so that each reference is explicitly a discreet Easter-egg detail intended to reward careful looking, not an element needed for immediate scene comprehension, denomination recognition, or the dominant visual hierarchy. Each reference should remain subordinate enough that its absence from an initial reading does not weaken the note, while its discovery on closer inspection reveals the continuity chain across the series.
+
+  - id: PL-007
+    category: cross_denomination_sameness
+    detector_family: '21. Cross-denomination sameness'
+    priority: medium
+    detector_confidence: medium
+    detected: >
+      Recto scene families repeat substantially: €10, €20, and €50 are cavern
+      or cave compositions, while €5 and €100 are elevated mountain landscapes.
+      Their material, colour, geology, and border logic differ, but the proposal
+      also requires denomination discrimination through large-scale scene
+      structure and grayscale performance.
+    proxies:
+      - 'three subterranean rectos'
+      - 'two mountain rectos'
+      - 'shared recto composition'
+      - 'explicit grayscale scene-structure requirement'
+    false_positive_risk: >
+      Deepslate, open stone cavern, and dripstone cave can produce strongly
+      different silhouettes, and the two mountain scenes can differ through
+      altitude, valley form, and ore scarcity.
+    false_negative_risk: >
+      The missing local camera definitions may amplify the sameness by allowing
+      generation to converge on familiar cave and cliff compositions.
+    underlying_problem: >
+      Series coherence may be relying on environmental category repetition more
+      than the discrimination requirement can tolerate.
+    why_it_matters: >
+      At reduced size or without colour, three cave notes can become harder to
+      distinguish even if their close-range materials differ.
+    review_questions:
+      - 'Can €10, €20, and €50 be identified from silhouette alone in grayscale?'
+      - 'Can €5 and €100 be distinguished without relying on ore colour?'
+      - 'Would fixed camera and dominant negative-space shapes solve the issue without changing the environments?'
+    options:
+      - id: A
+        action: >
+          Keep the current environments but assign each repeated environment a
+          distinct dominant silhouette, camera, and foreground-background
+          structure.
+      - id: B
+        action: >
+          Replace one repeated environment if grayscale testing shows persistent
+          confusion.
+      - id: C
+        action: >
+          Leave unchanged if thumbnail and grayscale prototypes already
+          demonstrate reliable discrimination.
+    recommended_option: A
+    expected_effect: >
+      Preserves the material logic while making repeated landscape categories
+      function as visibly different compositions.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '16.4, 17.4, 18.3, 15.3, 19.4 Recto sections'
+        anchor: 'deepslate cavern, stone cavern, dripstone cave, mountain landscapes'
+        proposal_lines: '909-924, 979-994, 1073-1086, 1177-1192, 1265-1280'
+        evidence: 'The €10 and €20 rectos are both cavern scenes. :contentReference[oaicite:10]{index=10} :contentReference[oaicite:11]{index=11}'
+        related_locations:
+          - '€50 dripstone cave and €100 mountain. :contentReference[oaicite:12]{index=12} :contentReference[oaicite:13]{index=13}'
+          - '8.5 Grayscale performance'
+    decision: A
+    note: null
+
+  - id: PL-008
+    category: unresolved_alternatives
+    detector_family: '1. Unresolved alternatives'
+    priority: medium
+    detector_confidence: high
+    detected: >
+      The €20 reverse leaves several visible architectural choices open:
+      candles or lamps; interior exposure through open courtyards, roofless
+      galleries, windows, or cut-back walls; and an optional degree of interior
+      revelation. These choices affect façade mass, lighting, roof silhouette,
+      and how much of the library is interior versus exterior.
+    proxies:
+      - 'candles or lamps'
+      - 'may reveal interior activity'
+      - 'courtyards, roofless galleries, windows or cut-back walls'
+    false_positive_risk: >
+      Some of these alternatives can coexist harmlessly as minor details in a
+      large Minecraft build.
+    false_negative_risk: >
+      The broader list of teaching, observation, restoration, pigment work, and
+      enchanting also leaves unresolved how many subordinate zones are visible.
+    underlying_problem: >
+      The dominant subject is selected, but its architectural presentation is
+      still a menu of substantially different ways to expose the interior.
+    why_it_matters: >
+      Independent generations can produce a closed library, an open cloister,
+      a roofless mechanical cut-back, or a heavily windowed hall while all
+      technically satisfy the text.
+    review_questions:
+      - 'Which single mechanism exposes the library interior most clearly?'
+      - 'Which light source is part of the denomination identity?'
+      - 'How much of the roof silhouette should remain intact?'
+    options:
+      - id: A
+        action: >
+          Select one primary interior-exposure mechanism and one principal
+          lighting object for the canonical €20 composition.
+      - id: B
+        action: >
+          Define one required mechanism and permit the others only as minor
+          subordinate details.
+      - id: C
+        action: >
+          Leave the alternatives open if deliberate variation among generated
+          candidates is desired.
+    recommended_option: A
+    expected_effect: >
+      Makes the library's massing and interior visibility repeatable without
+      reducing the amount of close-reading detail available.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '17.5 €20 Verso'
+        anchor: 'candles or lamps; open courtyards, roofless galleries, windows or cut-back walls'
+        proposal_lines: '1087-1102'
+        evidence: 'Several mutually substitutable visible constructions remain open. :contentReference[oaicite:14]{index=14}'
+        related_locations:
+          - '9.4 shared allowance for courtyards, open halls, terraces, or partial interiors'
+    decision: A
+    note: null
+
+  - id: PL-009
+    category: choice_budget_overload
+    detector_family: '32. Choice-budget overload'
+    priority: high
+    detector_confidence: high
+    detected: >
+      The €100 reverse combines a dominant market square with a large village
+      vocabulary, an unspecified set of professions, multiple secondary civic
+      programs, a lapidary and verification workspace, and additional
+      close-reading features. The hierarchy names the square as dominant but
+      does not bound how many secondary zones or professions must be visible.
+    proxies:
+      - 'villagers of several professions'
+      - 'long list of stalls, paths, farms, wells, storage, workshops, houses, fences, animals'
+      - 'nine named professions in the narrative'
+      - 'lapidary and verification workspace'
+      - 'map stall, repair workshop, public ledger space, maintained infrastructure'
+    false_positive_risk: >
+      Village scenes naturally contain many canonical objects, and several can
+      be represented as tiny texture-level details rather than independent
+      subjects.
+    false_negative_risk: >
+      The continuity chapter additionally calls for a controlled gold reserve,
+      which would add another program if treated as mandatory.
+    underlying_problem: >
+      The image model is told which ecosystem to depict but receives too much
+      freedom over the visible subset, density, and participant mix.
+    why_it_matters: >
+      Different runs can range from a clear central market to a dense town
+      panorama, changing silhouette, visual rest, and the prominence of emerald
+      exchange.
+    review_questions:
+      - 'Which professions must actually be visible?'
+      - 'How many subordinate program zones can the square support before it stops being the clear protagonist?'
+      - 'Which close-reading elements are essential and which are conceptual background?'
+    options:
+      - id: A
+        action: >
+          Select a fixed small subset of visible professions and secondary zones,
+          with the remaining professions retained only in rationale.
+      - id: B
+        action: >
+          Keep the broader ecosystem but define explicit hierarchy tiers and
+          maximum visible secondary groups.
+      - id: C
+        action: >
+          Leave the full set available only if the generation workflow separately
+          selects and records one canonical composition before producing final art.
+    recommended_option: A
+    expected_effect: >
+      Reduces density drift and makes the market square, bell, and exchange
+      relationships survive reliably at banknote scale.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '19.5-19.8 €100'
+        anchor: 'several professions and multiple secondary market programs'
+        proposal_lines: '1281-1339'
+        evidence: 'The local specification contains many independently selectable visible elements. :contentReference[oaicite:15]{index=15} :contentReference[oaicite:16]{index=16}'
+        related_locations:
+          - '9.4 dominant verso table, €100 supporting environment'
+          - '22. Continuity across denominations'
+    decision: A
+    note: null
+
+  - id: PL-010
+    category: choice_budget_overload
+    detector_family: '33. Noun-hierarchy overload'
+    priority: medium
+    detector_confidence: medium
+    detected: >
+      The €200 reverse has a clear reserve-storage protagonist but accumulates
+      many substantial secondary systems: powered transport, clocks and
+      observation, beacon, smithing, brewing and golden food, portal and piglin
+      exchange, scientific equipment, assay implications, and a surrounding
+      civic environment. The phrase "a few strong canonical uses" does not
+      select which few are mandatory.
+    proxies:
+      - 'long visual-core enumeration'
+      - 'portal exchange area'
+      - 'treatment layer'
+      - 'scientific equipment in close reading'
+      - 'surrounding city in historical layer'
+      - 'few strong canonical uses without a selected subset'
+    false_positive_risk: >
+      The reserve complex is explicitly dominant, the portal is explicitly
+      subordinate, and several uses can occupy very little image area.
+    false_negative_risk: >
+      The continuity chapter adds a coal-fired furnace through an assay-room
+      reference, further increasing the possible secondary program set.
+    underlying_problem: >
+      The hierarchy is stated, but the secondary-content budget remains open.
+    why_it_matters: >
+      A generation may devote substantial area to portal exchange, treatment,
+      science, or transport, making the reverse read as different concepts
+      despite sharing the same reserve building.
+    review_questions:
+      - 'Which secondary gold uses must survive thumbnail reduction?'
+      - 'Which uses exist only for close inspection?'
+      - 'Is the surrounding civic environment a visible area or only a conceptual consequence?'
+    options:
+      - id: A
+        action: >
+          Select a canonical subset of secondary mechanisms and assign all other
+          uses to rationale or optional close-reading documentation.
+      - id: B
+        action: >
+          Keep all mechanisms but explicitly rank them into primary, secondary,
+          and tertiary visual tiers.
+      - id: C
+        action: >
+          Leave unchanged if one canonical composition is fixed elsewhere before
+          image generation begins.
+    recommended_option: A
+    expected_effect: >
+      Keeps the reserve-storage complex visually dominant and reduces run-to-run
+      substitution among secondary narratives.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '20.4-20.6 €200'
+        anchor: 'reserve complex with transport, treatment, beacon, portal exchange, and scientific uses'
+        proposal_lines: '1394-1427'
+        evidence: 'The reverse contains many substantial supporting mechanisms around the reserve. :contentReference[oaicite:17]{index=17}'
+        related_locations:
+          - '22. Continuity across denominations'
+    decision: A
+    note: null
+
+  - id: PL-011
+    category: human_presence
+    detector_family: '28. Missing precision in high-leverage variables'
+    priority: medium
+    detector_confidence: medium
+    detected: >
+      Figure scale and narrative role are defined, but presence itself remains
+      unresolved on many faces. Rectos permit figures to be absent or extremely
+      limited. Versos describe work, teaching, maintenance, study, transport,
+      and exchange, while only the emerald note clearly requires villagers.
+    proxies:
+      - 'human figures are absent or extremely limited'
+      - 'figures remain small'
+      - 'figures demonstrate work, study, exchange, repair, or civic use'
+      - 'villagers appear only where mechanics are necessary'
+      - 'activity verbs in local scenes without local presence decisions'
+    false_positive_risk: >
+      Tiny incidental figures may have little effect on composition when the
+      system or building remains dominant.
+    false_negative_risk: >
+      Actor type matters as well as presence: players, villagers, and piglins
+      carry different narrative meanings and may be inferred independently.
+    underlying_problem: >
+      The proposal defines what figures may do but not consistently whether each
+      scene contains them.
+    why_it_matters: >
+      Populated and unpopulated versions of the same build communicate different
+      scales of civic life and can alter visual density and attention.
+    review_questions:
+      - 'For each of the twelve faces, is figure presence required, prohibited, or intentionally variable?'
+      - 'Which actor types are permitted on each reverse?'
+      - 'Does an activity need a visible actor to remain legible?'
+    options:
+      - id: A
+        action: >
+          Add a face-level figure-presence field stating none, required small
+          figures, or intentionally variable, with actor type where relevant.
+      - id: B
+        action: >
+          Make all non-emerald figures absent unless a local scene explicitly
+          requires them.
+      - id: C
+        action: >
+          Keep the current flexible rule if figure presence is deliberately a
+          low-level compositional variable.
+    recommended_option: A
+    expected_effect: >
+      Prevents otherwise identical scenes from switching unpredictably between
+      inhabited and empty civic systems.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '6.1 Recto: origin; 11.3 Human and villager figures'
+        anchor: 'absent or extremely limited; figures remain small'
+        proposal_lines: '269-283, 763-772'
+        evidence: 'The common rules constrain figure role but not consistently their presence. :contentReference[oaicite:18]{index=18} :contentReference[oaicite:19]{index=19}'
+        related_locations:
+          - '15.4, 16.5, 17.5, 18.4, and 20.4 activity descriptions'
+    decision: A
+    note: >
+      Add figures where it benefits to the story of the note. Only on reverses:
+      - €20: players: people learning, studying, because knowledge needs minds
+      - €100: players and villagers: required for trading and exchange. trading between players and villagers represents people of different origins exchanging on a market, pluralism
+      - €200: players and piglins: required for institutional legitimacy, otherwise it's just a shiny building. People give the institution a reason to exist. Piglins are worth adding because gold structures their society too; they represent how gold can be a vector for civilization and commons, not just wealth
+      No other plate should contain figures.
+
+  - id: PL-012
+    category: unresolved_alternatives
+    detector_family: '1. Unresolved alternatives'
+    priority: medium
+    detector_confidence: high
+    detected: >
+      The ore label, described as a fixed recurring series emblem, still has two
+      visible outer-shape branches: circular or very slightly stepped. The field
+      is likewise described as white or near-white, though the shape alternative
+      is the higher-leverage ambiguity.
+    proxies:
+      - 'standard form is circular or very slightly stepped'
+      - 'field is white or near-white'
+      - 'same element is described as stable across all six notes'
+    false_positive_risk: >
+      A very small edge step may be visually negligible and could be treated as
+      print-detail variation rather than a separate silhouette.
+    false_negative_risk: >
+      Edge-line weight and denomination-specific line patterns may introduce
+      further variation if no master label construction exists.
+    underlying_problem: >
+      A fixed series identifier is specified through alternatives instead of one
+      selected silhouette.
+    why_it_matters: >
+      The ore label is repeated on every recto and is explicitly used for
+      denomination recognition, so even small shape variation can become
+      unintended series drift.
+    review_questions:
+      - 'Is the outer edge actually circular, stepped, or dependent on denomination?'
+      - 'Would all six labels be traced from one master silhouette?'
+      - 'Is white versus near-white a controlled palette transformation or a free choice?'
+    options:
+      - id: A
+        action: >
+          Select one exact outer silhouette for all denominations and treat
+          denomination variation as internal texture and colour only.
+      - id: B
+        action: >
+          Define one master circular form with a fixed small stepped edge detail
+          rather than presenting the two as alternatives.
+      - id: C
+        action: >
+          Leave the alternative if deliberate label-shape variation is desired,
+          and then state the rule governing that variation.
+    recommended_option: A
+    expected_effect: >
+      Turns the repeated ore label into a genuinely fixed series component.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '10.2 Shape and scale; 10.3 Tonal field'
+        anchor: 'circular or very slightly stepped'
+        proposal_lines: '676-699'
+        evidence: 'The recurring label retains visible shape and tone alternatives. :contentReference[oaicite:20]{index=20}'
+        related_locations:
+          - '9.7 fixed ore-label position and relative scale'
+    decision: A
+    note: Circular. Only size and outline shape have to remain fixed. Internal colors, motifs and structure can freely evolve for each note.
+
+  - id: PL-013
+    category: missing_precision_high_leverage
+    detector_family: '28. Missing precision in high-leverage variables'
+    priority: high
+    detector_confidence: high
+    detected: >
+      The proposal requires every ore-label block to use the same viewing angle,
+      cube dimensions, lighting direction, frame distance, and scale, but it
+      never defines the canonical pose or identifies a single master source.
+      "The same" is therefore a relational invariant without an anchor.
+    proxies:
+      - 'same viewing angle'
+      - 'same apparent cube dimensions'
+      - 'same lighting direction'
+      - 'same distance from the frame'
+      - 'same visual scale'
+      - 'no canonical pose values or master asset named'
+    false_positive_risk: >
+      A production workflow may already reuse one master block render or scene,
+      which would satisfy the invariant without numerical values in the proposal.
+    false_negative_risk: >
+      Texture sampling, shadow softness, and exact face visibility can also vary
+      across independently generated blocks even when nominal angle and scale
+      are similar.
+    underlying_problem: >
+      The most repeated denomination identifier depends on cross-image matching
+      but lacks a concrete common reference.
+    why_it_matters: >
+      Independently generated ore blocks can drift in apparent rotation,
+      lighting, cube scale, and face proportions, weakening one of the series'
+      principal recognition devices.
+    review_questions:
+      - 'Is there one master ore-block pose reused for all six labels?'
+      - 'What visible faces and lighting direction define that pose?'
+      - 'Should later workflows generate six blocks independently at all?'
+    options:
+      - id: A
+        action: >
+          Define one canonical master ore-block pose and require all six
+          denominations to inherit its geometry, lighting, crop, and scale.
+      - id: B
+        action: >
+          Specify the pose parametrically with fixed view orientation, light
+          direction, visible-face relationship, and occupancy.
+      - id: C
+        action: >
+          Designate an external master asset as authoritative and reference it
+          explicitly from the proposal.
+    recommended_option: A
+    expected_effect: >
+      Converts a relative consistency request into a reproducible fixed component
+      and substantially reduces ore-label drift.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '10.4 Central object'
+        anchor: 'every denomination uses the same viewing angle and lighting direction'
+        proposal_lines: '701-709'
+        evidence: 'The proposal names the properties that must match but does not define their common anchor. :contentReference[oaicite:21]{index=21}'
+        related_locations:
+          - '9.12 Cross-denomination rendering consistency'
+    decision: C
+    note: Fixed isometric ore block assets to fill the label badge are provided externally. The design package prompt already provides them, but they are not provided for concept vaidation one pass runs. No changes.
+
+  - id: PL-014
+    category: missing_precision_high_leverage
+    detector_family: '28. Missing precision in high-leverage variables'
+    priority: medium
+    detector_confidence: high
+    detected: >
+      The Europe map is required to use one stable silhouette, projection,
+      orientation, and proportion across the series, but the actual projection,
+      orientation, crop, and canonical map geometry are not selected in the
+      proposal.
+    proxies:
+      - 'one stable silhouette'
+      - 'projection'
+      - 'orientation'
+      - 'proportion'
+      - 'no corresponding canonical map definition'
+    false_positive_risk: >
+      The technical brief may supply an official map asset that makes further
+      specification unnecessary.
+    false_negative_risk: >
+      Internal texture, line density, and relationship to the institutional
+      field can also drift if the map is regenerated rather than reused.
+    underlying_problem: >
+      A fixed common element is described by consistency requirements but not by
+      the object that all notes should consistently use.
+    why_it_matters: >
+      The map appears on every denomination and is part of the common
+      institutional architecture, so small changes become conspicuous when
+      notes are viewed as a series.
+    review_questions:
+      - 'Is there an official or project-specific master map asset?'
+      - 'Which projection and orientation are canonical?'
+      - 'Is the map reused as controlled artwork or regenerated per note?'
+    options:
+      - id: A
+        action: >
+          Identify one canonical map asset and make all denomination treatments
+          derive from it.
+      - id: B
+        action: >
+          Define the map projection, orientation, silhouette, and relative
+          occupancy directly in the proposal.
+      - id: C
+        action: >
+          Leave unchanged only if the external technical brief supplies a
+          mandatory map master used unchanged downstream.
+    recommended_option: A
+    expected_effect: >
+      Prevents institutional-field drift and removes another independent
+      generation decision from all twelve faces.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '9.10 Institutional integration'
+        anchor: 'one stable silhouette, projection, orientation, and proportion'
+        proposal_lines: '633-640'
+        evidence: 'The required consistency dimensions are named without selecting the common geometry. :contentReference[oaicite:22]{index=22}'
+        related_locations:
+          - '9.5 Shared alignments'
+          - '23. Security-ready visual opportunities'
+    decision: C
+    note: The map is provided externally as a tweakable SVG. The design package prompt already provides it, but it is not provided for concept vaidation one pass runs. No changes.
+
+  - id: PL-015
+    category: duplicated_rules
+    detector_family: '25. Duplicated rules and local sediment'
+    priority: medium
+    detector_confidence: high
+    detected: >
+      Several series-wide invariants are copied verbatim or near-verbatim into
+      each denomination section. The clearest examples are the six repeated
+      recto statements about reading as a selected Minecraft view when isolated
+      from the monetary frame and the six repeated statements defining the
+      canonical ore block at common scale. Similar exclusion rules recur across
+      global and local sections.
+    proxies:
+      - 'same recto recognition sentence repeated six times'
+      - 'same ore-label block sentence repeated six times'
+      - 'generic-voxel, cutaway, and explanatory-overlay exclusions repeated locally and globally'
+    false_positive_risk: >
+      Explicit repetition can be useful if denomination sections are later
+      extracted independently as complete prompts.
+    false_negative_risk: >
+      Near-duplicate rendering, architecture, and anti-overlay rules occur with
+      wording changes and may create more maintenance burden than exact
+      duplicates reveal.
+    underlying_problem: >
+      Series invariants are partly centralised and partly copied into local
+      records, creating multiple editable copies of the same rule.
+    why_it_matters: >
+      Future revisions can update one copy and leave another stale; copied rules
+      also consume context that could instead specify denomination-specific
+      geometry and hierarchy.
+    review_questions:
+      - 'Are denomination chapters intended to function independently as prompts?'
+      - 'Which repeated sentences add local meaning rather than restating a common invariant?'
+      - 'Can prompt assembly re-inject common rules later instead of storing them six times here?'
+    options:
+      - id: A
+        action: >
+          Centralise series-wide invariants in one canonical section and keep
+          denomination chapters focused on local differences.
+      - id: B
+        action: >
+          Keep local restatement only in a separate generation-prompt layer,
+          while removing it from the jury-facing proposal.
+      - id: C
+        action: >
+          Leave selected duplicates where independent extraction is a real
+          downstream requirement, but mark the central source as authoritative.
+    recommended_option: A
+    expected_effect: >
+      Reduces context length and revision drift while making local scene
+      specifications easier to audit for actual denomination-specific decisions.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '15.3-20.3 Recto sections'
+        anchor: 'repeated isolated-from-frame Minecraft-view rule'
+        proposal_lines: '909-1393'
+        evidence: 'The same rule appears in consecutive denomination rectos, including €5 and €10. :contentReference[oaicite:23]{index=23} :contentReference[oaicite:24]{index=24}'
+        related_locations:
+          - '10.4 Central object'
+          - '4.5 Visual fidelity to Minecraft'
+          - '25. Excluded elements'
+    decision: A
+    note: Denomination chapters are not intended to function independently as prompts; the model reads the whole proposal plus associated workflow prompt. If centralization saves context and increases uniformity, do it.
+
+  - id: PL-016
+    category: negative_sediment
+    detector_family: '4. Negative sediment'
+    priority: medium
+    detector_confidence: high
+    detected: >
+      The proposal carries a large exclusion inventory, particularly in section
+      25, while many of the same failure modes are already addressed positively
+      through Minecraft-native construction, one dominant subject, canonical
+      textures, controlled monetary framing, and the no-overlay composition
+      rules. The exclusions include both precise interdictions and broad style
+      boundaries.
+    proxies:
+      - 'large dedicated excluded-elements section'
+      - 'repeated no-cutaway, no-overlay, no-generic-architecture rules'
+      - 'same negative themes present in sections 4.5, 7.5, 9.3, 11.1, and denomination chapters'
+      - 'approximately 101 negative constructions under the review heuristic'
+    false_positive_risk: >
+      The unusual combination of Minecraft and currency plausibly creates
+      recurrent failure modes, so a substantial exclusion list may be justified.
+      Several bans are precise, testable, and worth retaining.
+    false_negative_risk: >
+      Some negative history is embedded in contrastive prose outside section 25
+      and may not be captured by a simple negative-instruction count.
+    underlying_problem: >
+      Historical failure prevention is competing with direct target definition
+      and is stored in multiple places.
+    why_it_matters: >
+      Repeated negative clauses increase prompt length, complicate maintenance,
+      and can make downstream generation attend to rejected concepts that are
+      already excluded by stronger positive construction rules.
+    review_questions:
+      - 'Which exclusions prevent a plausible failure not already blocked by a positive invariant?'
+      - 'Which broad exclusions can be translated into observable scene properties?'
+      - 'Can all retained interdictions live in one canonical exclusion set?'
+    options:
+      - id: A
+        action: >
+          Retain specific, externally testable prohibitions and remove duplicates
+          already fully implied by positive requirements.
+      - id: B
+        action: >
+          Replace broad style exclusions with positive construction properties
+          while preserving a compact list of recurrent hard failures.
+      - id: C
+        action: >
+          Keep the current list if documented generation tests show that each
+          prohibition independently prevents a recurring failure.
+    recommended_option: A
+    expected_effect: >
+      Reduces specification sediment without discarding useful safeguards and
+      shifts more context toward the desired target.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '25. Excluded elements'
+        anchor: 'banknotes must not resemble; following elements do not appear'
+        proposal_lines: '1547-1633'
+        evidence: 'The exclusion section contains a long series of specific and broad prohibitions. :contentReference[oaicite:25]{index=25}'
+        related_locations:
+          - '4.5 Visual fidelity to Minecraft. :contentReference[oaicite:26]{index=26}'
+          - '7.5 Printed Minecraft rather than engraved voxel fantasy'
+          - '9.3 Shared verso composition'
+          - '11.1 Architectural language'
+    decision: B
+    note: null
+
+  - id: PL-017
+    category: false_precision
+    detector_family: '27. False precision'
+    priority: low
+    detector_confidence: medium
+    detected: >
+      High-chroma accents are limited to approximately 3 to 5 percent of the
+      visible surface. The number is precise enough to appear enforceable but
+      the proposal does not identify a measurement method, mask, or production
+      constraint that would make the percentage reproducible across highly
+      different scenes.
+    proxies:
+      - 'approximately 3 to 5 percent'
+      - 'surface-area percentage applied across six different compositions'
+      - 'no stated measurement or enforcement method'
+    false_positive_risk: >
+      The percentage may be a useful art-direction heuristic for human designers
+      even if it is not measured literally.
+    false_negative_risk: >
+      Other exact counts or ratios may also be decorative rather than
+      stabilising, but most counts in the proposal correspond to real design
+      invariants.
+    underlying_problem: >
+      Precision is allocated to an aesthetic quantity that may be less
+      enforceable than unresolved camera, layout, or secondary-content choices.
+    why_it_matters: >
+      A downstream image model cannot reliably honour a visible-area percentage,
+      while human reviewers may interpret the number as a hard compliance rule.
+    review_questions:
+      - 'Is 3 to 5 percent derived from a tested design constraint?'
+      - 'Will anyone actually measure accent area?'
+      - 'Would a rank-based rule such as small focal accents communicate the same intent more robustly?'
+    options:
+      - id: A
+        action: >
+          Keep the percentage only if a production-stage measurement method
+          exists.
+      - id: B
+        action: >
+          Replace the percentage with an ordinal compositional rule defining
+          accents as a minor, localised colour tier.
+      - id: C
+        action: >
+          Leave unchanged and explicitly treat the range as non-binding visual
+          guidance.
+    recommended_option: B
+    expected_effect: >
+      Moves precision away from a difficult-to-enforce surface estimate while
+      preserving the intended restrained colour hierarchy.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '8.1 General rule'
+        anchor: 'high-chroma accents limited to approximately 3 to 5 percent'
+        proposal_lines: '437-448'
+        evidence: "The percentage is the proposal's most conspicuous quantitative colour constraint. :contentReference[oaicite:27]{index=27}"
+        related_locations:
+          - '8.2 Shared palette structure'
+          - 'denomination colour sections'
+    decision: other
+    note: 'Keep the approximate 3–5% figure because it usefully quantifies the intended visual scarcity of high-chroma accents more clearly than a purely qualitative instruction would. Reword the requirement to make explicit that the percentage is an indicative visual target, not a measured production constraint or compliance threshold. Its purpose is to communicate order of magnitude: high-chroma colour should occupy only a very small, localised portion of the composition.'
+
+  - id: PL-018
+    category: stale_concept_residue
+    detector_family: '23. Stale concept residue'
+    priority: low
+    detector_confidence: high
+    detected: >
+      The accessibility section refers to the near-white ore label as "the lens,"
+      while the rest of the proposal consistently defines it as an ore label and
+      explicitly says it must not resemble a magnifying device. This appears to
+      be terminology left from an earlier concept state.
+    proxies:
+      - 'single use of lens in the accessibility section'
+      - 'ore label is the dominant canonical term elsewhere'
+      - 'label construction explicitly rejects magnifying-device associations'
+    false_positive_risk: >
+      Lens could have been intended as an informal synonym for the pale label
+      field rather than an obsolete concept.
+    false_negative_risk: >
+      Other older terms may remain in summary tables without being as lexically
+      distinctive.
+    underlying_problem: >
+      One section may still be carrying terminology from a superseded version of
+      the recurring identifier.
+    why_it_matters: >
+      Stale naming creates ambiguity about whether the label has an optical,
+      magnifying, or transparent function that the current specification
+      otherwise rejects.
+    review_questions:
+      - 'Is lens still an intentional design term?'
+      - 'Should every section use one canonical name for this fixed component?'
+      - 'Does any downstream prompt or asset still use the older terminology?'
+    options:
+      - id: A
+        action: >
+          Standardise the component name to the canonical ore-label terminology
+          throughout all derived sections.
+      - id: B
+        action: >
+          Keep lens only if it denotes a distinct functional subcomponent, and
+          define that distinction explicitly.
+    recommended_option: A
+    expected_effect: >
+      Removes a small but clear sign of revision residue and prevents the fixed
+      identifier from acquiring unintended optical semantics.
+    locations:
+      - file: 'proposal-v6(1).md'
+        section: '12. Accessibility and denomination discrimination'
+        anchor: 'the lens is supplementary'
+        proposal_lines: '793-829'
+        evidence: 'The accessibility section switches terminology for the ore label. :contentReference[oaicite:28]{index=28}'
+        related_locations:
+          - '10.1-10.5 The ore label, including the prohibition on magnifying-device appearance. :contentReference[oaicite:29]{index=29}'
+    decision: A
+    note: null
