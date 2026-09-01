@@ -1,53 +1,50 @@
-# Crafting Europe
+# Reproducible layered design package
 
-## Layered professional design package specification
+## Purpose
 
-### Purpose
+This document defines the workflow for building the final twelve banknote images from a small set of reusable assets, generated intermediates, and deterministic composition rules.
 
-This document defines the practical production workflow for the final twelve banknote images.
+The aim is not to simulate a central-bank production archive.
+The aim is to create a self-contained design kit that:
 
-The proposal defines meaning, narrative, and visual intent.
-This package defines reusable assets, generated intermediates, fixed layer structure, deterministic composition, export sizes, and the documentation required to rebuild the finished notes.
+- keeps generated elements swappable;
+- reuses stable assets instead of regenerating them;
+- assembles finished notes deterministically;
+- exports the final flattened note PNGs directly;
+- provides enough documentation and scripts to rebuild the notes without manual reconstruction.
 
-The objective is simple:
-
-- generate only what benefits from AI generation;
-- reuse everything that can be reused;
-- keep generated elements swappable;
-- keep final assembly deterministic;
-- deliver finished banknotes that can be viewed immediately, without manual reconstruction.
-
-This is not a speculative print-studio archive. It is a reproducible design package for concept-quality fictional banknotes.
+The proposal defines meaning and art direction.
+This file defines package contents, reusable inputs, generated intermediates, layout control, layer order, composition scripts, and final exports.
 
 ## Core principles
 
-1. Separate generation from composition.
+1. Generate only what benefits from generation.
 
-   AI should generate scene-dependent imagery and a small number of decorative plates. It should not be responsible for repeatedly redrawing stable institutional elements.
+   AI should generate the main scene plates and selected denomination-specific ornament plates. It should not repeatedly redraw stable institutional assets.
 
-2. Turn repeatable elements into assets.
+2. Reuse what can be reused.
 
-   Ore blocks, lettering, numerals, the EU flag, the Europe map, and other stable components should be stored once and reused.
+   Ore blocks, numerals, euro scripts, the EU flag, the Europe map, and other stable elements should exist as assets and be reused across builds.
 
-3. Assemble the final notes deterministically.
+3. Keep the note skeleton deterministic.
 
-   Final note construction should be performed by Python scripts from fixed coordinates and documented rules, not by manual drag-and-drop and not by asking an image model to rediscover the layout.
+   Stable elements such as numerals, euro scripts, badge placement, map placement, and flag placement should be controlled by layout data and composition scripts.
 
-4. Prefer vector where appropriate.
+4. Preserve denomination-specific richness.
 
-   Typography, numerals, the EU flag, and the Europe map should remain vector assets whenever possible. Scene imagery and AI-generated decorative plates remain raster.
+   The series shares a common structure, but each denomination should retain its own border language, badge treatment, local texture rhythm, and ornament identity. Shared structure does not mean recolored sameness.
 
-5. Keep the package self-contained.
+5. Keep the scene visually primary.
 
-   The package must include the final exported notes, all reusable inputs, all generated intermediates used to build them, the composition scripts, and the documentation required to reproduce the assembly.
+   The main scene remains the heart of the note. Ornament, side fields, and institutional elements support it rather than suppressing it.
 
-6. Keep the workflow simple.
+6. Use Markdown and YAML.
 
-   Avoid unnecessary archival machinery. No CSV manifests, no decorative bureaucracy, and no redundant pseudo-professional outputs. Use Markdown for documentation and YAML for structured data.
+   Documentation belongs in Markdown. Structured project data belongs in YAML. Avoid decorative machinery such as CSV manifests or excessive archival overhead.
 
 ## 1. Authoritative final output sizes
 
-The final flattened note exports use the following exact trim sizes.
+The final note exports use the following exact canvas sizes.
 
 | File               | Side       | Aspect ratio | Scale by |          Size |
 | ------------------ | ---------- | ------------ | -------- | ------------: |
@@ -64,79 +61,80 @@ The final flattened note exports use the following exact trim sizes.
 | `EUR200_recto.png` | €200 recto | 153:82       | 11       | 1683 × 902 px |
 | `EUR200_verso.png` | €200 verso | 153:82       | 11       | 1683 × 902 px |
 
-These dimensions are the authoritative output canvases.
-
-No outer presentation margin, mockup background, photographed-paper context, skew, or drop shadow is part of the final note files.
+These canvas sizes are authoritative.
+No outer presentation margin, skew, photographed-paper context, or mockup background belongs in the final note files.
 
 ## 2. Deliverable contents
 
 The final package must contain:
 
-- `design-package-v2.md` or the approved package specification file;
-- the theme proposal file used as conceptual reference;
-- a short `README.md` describing the package;
-- the composition scripts used to build the notes;
-- the YAML configuration files used by the scripts;
-- all provided assets;
-- all generated intermediate plates actually used in the final build;
+- `design-package.md`;
+- the current proposal file used as conceptual reference;
+- `README.md` with a short usage summary;
+- Python scripts used for construction;
+- YAML files used by the scripts;
+- all provided inputs;
+- all generated intermediates actually used in the final build;
 - the final flattened note PNGs;
-- one or more contact sheets for fast review.
+- at least one contact sheet.
 
-The package should not require the recipient to spend significant time reconstructing the notes manually in an image editor.
+The package should be directly inspectable and directly runnable.
+A reviewer should not need to reconstruct the notes manually in Paint.NET or another editor just to see the finished result.
 
 ## 3. Package structure
 
-Use a simple structure such as:
+A recommended package tree is:
 
 - `README.md`
-- `design-package-v2.md`
+- `design-package.md`
 - `layout.yaml`
-- `palette.yaml`
 - `generation-record.yaml`
 - `scripts/`
-  - `build_notes.py`
   - `build_type_assets.py`
+  - `build_notes.py`
   - `build_contact_sheets.py`
 - `assets/`
   - `font/`
   - `ore_blocks/`
-  - `maps/`
   - `flags/`
+  - `maps/`
   - `type_svg/`
   - `type_png/`
   - `placeholders/`
+  - `masks/`
 - `generated/`
   - `scenes/`
-  - `frames/`
-  - `ore_labels/`
+  - `ornaments/`
+  - `badges/`
   - `map_tweaks/`
 - `outputs/`
   - `notes/`
   - `contacts/`
   - `layer_previews/`
 - `docs/`
-  - proposal and supporting notes
 
-The exact tree may be adapted, but the distinction between shared assets, generated plates, scripts, and final outputs must remain clear.
+The exact tree may vary, but the distinction between assets, generated intermediates, scripts, layout data, and finished outputs must remain clear.
 
 ## 4. Naming convention
 
-Use one stable file naming system.
+Use a single naming system throughout.
 
-Recommended pattern:
+Recommended patterns:
 
 - `EUR005_recto_scene.png`
-- `EUR005_recto_frame.png`
-- `EUR005_recto_label.png`
+- `EUR005_recto_ornament.png`
+- `EUR005_recto_badge.png`
 - `EUR005_recto_final.png`
-- `EUR005_recto_layers.png` only if a preview is exported
+- `EUR005_recto_scene_mask.svg`
+- `EUR005_recto_layers.png` only if a full-canvas preview is exported
 - `ore_coal_iso.png`
 - `eu_flag_master.svg`
 - `europe_map_master.svg`
+- `europe_map_project.svg`
 - `euro_scripts_master.svg`
 - `value_005_master.svg`
 
-Use `recto` and `verso` in names rather than single-letter abbreviations. The files are few enough that readability matters more than extreme abbreviation.
+Use `recto` and `verso` in file names rather than abbreviations.
 
 ## 5. Inputs and reusable assets
 
@@ -144,8 +142,7 @@ The following inputs are provided and become part of the package.
 
 ### 5.1 Isometric ore rasters
 
-Provided ore blocks are authoritative reusable assets.
-
+The provided isometric ore rasters are authoritative reusable assets.
 Use one raster file for each denomination motif:
 
 - coal ore;
@@ -155,38 +152,46 @@ Use one raster file for each denomination motif:
 - emerald ore;
 - gold ore.
 
-These files are inserted into the ore-label field. They are not regenerated as part of the final layout.
+These are inserted into the badge field.
+They are not regenerated as part of note construction.
 
-If light paper integration or minor colour adaptation is required, create a derived display version from the provided file and freeze it as the project asset. Do not ask the image model to reinterpret the block.
+If a small display adjustment is needed for paper integration, create a derived project copy and freeze it as the approved ore asset.
+Do not ask the model to reinterpret the ore cube.
 
 ### 5.2 Minecraft typeface
 
-The provided TTF file is a source asset, not a runtime dependency.
+The provided TTF file is a source input, not a runtime dependency.
 
-Use it to generate deterministic typography assets through a Python script.
-The composition pipeline should not rely on SVG text elements that assume the font is installed on the viewer’s system.
+Use it to generate deterministic typography assets through Python.
+Do not rely on live SVG text elements that assume the font is installed on the viewer’s system.
 
-The recommended method is:
+Recommended method:
 
-1. use the TTF file in `build_type_assets.py`;
+1. read the TTF in `build_type_assets.py`;
 2. generate the required strings and numerals;
-3. convert them to outlined SVG paths;
-4. optionally rasterize matching transparent PNG versions for easier preview or manual import.
+3. convert them to outlined SVG assets;
+4. optionally produce matching transparent PNG previews.
 
-The final composition should use the derived outlined SVG assets, or their matching raster exports if needed, not live font references.
+The final build should use the derived outlined SVG assets, or their controlled rasterized equivalents, not live text rendering.
 
-Required strings and numeral assets include:
+Required type assets include:
 
-- `EURO`
-- `ΕΥΡΩ`
-- `ЕВРО`
-- `5`, `10`, `20`, `50`, `100`, `200`
-- `€`
-- any small repeated denomination strings used consistently across the series
+- `EURO`;
+- `ΕΥΡΩ`;
+- `ЕВРО`;
+- `5`, `10`, `20`, `50`, `100`, `200`;
+- `€`;
+- any repeated secondary denomination strings used in the chosen layout.
 
-Spacing, scale, and treatment should be defined once and reused.
+### 5.3 Grouped euro-script asset
 
-### 5.3 EU flag SVG
+The three euro scripts should exist as one grouped reusable asset as well as separate source assets if useful.
+
+The grouped asset should define a single stack with matched size, matched optical weight, and matched spacing logic.
+
+This avoids uneven results such as `EURO` appearing smaller than the two lines below.
+
+### 5.4 EU flag SVG
 
 The provided EU flag SVG is a stable reusable asset.
 
@@ -194,129 +199,204 @@ Do not regenerate it.
 Do not redraw the stars.
 Do not replace it with an AI-painted rectangle.
 
-The script may recolour or lightly integrate it into the note through opacity, texture overlay, or subtle tonal adjustment if that treatment is explicitly documented and remains consistent.
+If tonal or texture integration is applied, document it and keep it consistent.
 
-### 5.4 Europe map SVG
+### 5.5 Europe map SVG
 
-The provided Europe map SVG is also a reusable asset.
+The provided Europe map SVG is a reusable asset.
+The model may tweak it if necessary.
 
-Unlike the flag, the map may be tweaked if necessary.
 Permitted tweaks include:
 
 - adding or changing fill;
-- adjusting stroke or internal line treatment;
+- adjusting stroke or line treatment;
 - minor path cleanup;
-- minor simplification or correction required for the banknote composition.
+- minor shape correction if needed for the composition.
 
-If a tweak is made, the package must keep:
+If a tweak is made, keep:
 
 - the original provided SVG;
 - the edited SVG actually used in the build;
-- a short note in `generation-record.yaml` or `README.md` describing the tweak.
+- a short note in `generation-record.yaml`.
 
-After the edited SVG is approved, it becomes the frozen shared map asset and is reused throughout the series.
+Once approved, the edited SVG becomes the shared project map and should be reused consistently.
 
-### 5.5 Other reusable assets
+### 5.6 Optional shared assets
 
-The package may also contain reusable assets for:
+If used, the package may also include:
 
 - signature placeholder;
 - serial placeholder;
 - a common paper texture;
-- a common grain or print overlay;
-- shared tactile-mark placeholder shapes if they are used visually;
-- denomination border or frame helper geometry, if deterministic and reused.
+- a common print-grain overlay;
+- full-note masks or aperture masks;
+- helper geometry for deterministic placement.
 
-Only include these if they are actually used.
+Only include these if they are actually part of the build.
 
-## 6. Generated components
+## 6. Useful atomic elements
 
-Generation should be limited to the components that genuinely need it.
+The workflow should decompose the notes into actually useful swappable elements.
 
-### 6.1 Scene plates
+The preferred atomic elements are:
 
-A scene plate is the main image layer for a given side.
+- scene plate;
+- denomination-specific ornament plate;
+- denomination-specific empty badge plate, recto only;
+- ore block asset, recto only;
+- numeral asset;
+- grouped euro-script asset;
+- EU flag asset;
+- Europe map asset;
+- optional placeholder assets;
+- deterministic layout and mask data.
 
-One scene plate is generated for each of the twelve notes:
+Avoid decomposing the note into fake micro-layers that add complexity without practical editing value.
+
+## 7. Generated components
+
+Generation should be limited to the elements that benefit from it.
+
+### 7.1 Scene plates
+
+Generate one scene plate for each note side.
+There are twelve scene plates in total:
 
 - six rectos;
 - six versos.
 
 These are the main variable images of the series.
 
-They should be stored as raster PNGs at the final note size or larger in the same aspect ratio. If generated larger, the deterministic build script handles scaling and placement.
+They may be generated at final size or larger in the same aspect ratio.
+If generated larger, the build script handles scaling and placement.
 
-### 6.2 Empty ore-label plates
+### 7.2 Denomination-specific badge plates
 
-Generate one ore-label plate per recto denomination.
+Generate one empty badge plate for each recto denomination.
+There are six badge plates in total.
 
-This plate contains:
+Each badge plate contains:
 
-- the label shape;
+- the badge shape;
 - the pale field;
-- internal denomination-specific decoration;
+- denomination-specific internal pattern or texture;
+- ring detailing;
 - edge treatment.
 
-It must remain empty in the centre.
-The ore block itself is inserted separately as a reusable asset.
+The centre remains empty.
+The ore block is inserted separately.
 
-Store these as transparent full-canvas PNGs positioned exactly where they belong in the final recto.
+Keep fixed across the six badges:
 
-### 6.3 Frame and ornament plates
+- overall size category;
+- placement logic;
+- relation between badge size and ore-block size;
+- role as the recto identifier field.
 
-Generate one frame plate per note side where required.
+Allow to vary by denomination:
 
-The frame plate may contain:
+- border rhythm;
+- internal pattern;
+- ring language;
+- local texture logic;
+- visual motif tied to the material.
 
-- border structures;
-- decorative bands;
-- background printed details;
-- static note ornament;
-- any areas intended to sit above the scene.
+The six badges should not be a single base badge merely recolored.
 
-It must not contain reusable institutional assets that are better handled separately, such as:
+### 7.3 Denomination-specific ornament plates
+
+Generate ornament plates that carry the note’s decorative richness.
+
+Do not generate one universal frame and recolor it.
+The correct rule is:
+
+- shared structural skeleton;
+- denomination-specific ornament.
+
+An ornament plate may contain:
+
+- border systems;
+- side-field textures;
+- local decorative bands;
+- field transitions;
+- aperture surround treatment;
+- note-surface details that sit above or around the scene.
+
+It must not contain stable reusable assets better handled elsewhere, such as:
 
 - ore block raster;
 - EU flag;
 - Europe map;
-- EURO / ΕΥΡΩ / ЕВРО lettering;
-- denomination numerals if these are created deterministically.
+- grouped euro scripts;
+- numerals, if these are built deterministically.
 
-Store frame plates as full-canvas transparent PNGs at final note size.
+### 7.4 Recommended ornament subtypes
 
-### 6.4 Optional generated tweaks
+To reduce ambiguity, do not describe the whole note shell to the model simply as “the frame.”
+That wording is too open and tends to create visible scaffolding.
 
-If a scene or frame requires a non-destructive local repair, keep the corrected version and the source version.
+When useful, think in the following subtypes:
 
-Do not overcomplicate this with large archival overhead. A simple pattern such as:
+- border / ornament plate;
+- left value-field background plate;
+- right institutional-field background plate;
+- optional aperture-surround treatment.
 
-- `EUR020_verso_scene_source.png`
-- `EUR020_verso_scene_final.png`
+These may be generated together or separately, but the prompt should make their role explicit.
 
-is sufficient.
+### 7.5 Local repairs
 
-## 7. Scene-generation rules
+If a generated component needs a small non-destructive repair, keep both the source and approved project version.
+
+A simple naming pattern is sufficient:
+
+- `EUR020_verso_ornament_source.png`
+- `EUR020_verso_ornament_final.png`
+
+## 8. Reserved zones and deterministic masks
+
+Stable note elements should occupy reserved zones.
+Generated ornament should not paint freely across them.
+
+At minimum, define reserved zones for:
+
+- ore badge, recto only;
+- grouped euro-script field;
+- EU flag field;
+- Europe map field;
+- signature or placeholder field;
+- any fixed denomination field that should remain clear.
+
+These reserved zones should be defined in `layout.yaml` and, where useful, by mask assets in `assets/masks/`.
+
+This avoids failures such as:
+
+- ornament or border crossing through the badge;
+- the map being crowded or clipped;
+- script fields becoming inconsistent;
+- decorative structure behaving like visible template guides.
+
+## 9. Scene-generation rules
 
 The package workflow must explicitly preserve a consistent visual grammar across the twelve scene plates.
 
-### 7.1 Shared style requirements
+### 9.1 Shared style requirements
 
 All scene plates should maintain broadly the same:
 
 - level of detail;
 - edge behaviour;
-- texture sharpness;
+- texture crispness;
 - rendering language;
 - degree of Minecraft fidelity;
 - saturation restraint;
-- sense of material continuity.
+- material continuity.
 
-The model must not let one denomination become smooth, painterly, heavily engraved, or block-softened while another resembles a crisp Minecraft screenshot.
+The model must not let one denomination become smooth or painterly while another resembles a crisp Minecraft render.
 
-### 7.2 Minecraft fidelity
+### 9.2 Minecraft fidelity
 
 Recto and verso scenes should remain recognisably Minecraft.
-
 Required qualities include:
 
 - canonical or near-canonical block textures;
@@ -326,146 +406,188 @@ Required qualities include:
 - no heavy universal outlines around every block;
 - no drift into generic voxel fantasy.
 
-### 7.3 Recto scene rule
+### 9.3 Recto scene rule
 
-Recto scenes should generally aim for the visual directness of a carefully selected Minecraft view.
+Recto scenes should generally aim for the directness of a carefully selected Minecraft view.
+If the note shell is hidden, the image should still read as Minecraft rather than generic cubic concept art.
 
-If the note frame is hidden, the central image should still read as Minecraft, not as generic cubic concept art.
-
-### 7.4 Verso scene rule
+### 9.4 Verso scene rule
 
 Verso scenes may be denser and more constructed, but they should still be built from recognisable Minecraft objects, architecture, terrain, and mechanics.
 
-The scene must not try to solve the concept by inventing a block-fantasy city that only vaguely resembles the game.
+The scene must not solve the concept by inventing a block-fantasy city that only vaguely resembles Minecraft.
 
-### 7.5 Exclusions for scene generation
+### 9.5 Reference-based consistency
+
+When the workflow supports it, use the strongest one-pass notes as visual references for package generation.
+
+Use them not as compositions to copy, but as references for:
+
+- decorative density;
+- frame richness;
+- field texture;
+- the relation between scene and ornament;
+- overall seriousness.
+
+This is especially useful when generating ornament plates.
+The objective is to preserve the richness seen in strong one-pass notes while still producing clean modular components.
+
+### 9.6 Scene exclusions
 
 Do not generate scene plates with:
 
 - the EU flag;
 - the Europe map;
-- ore label field;
-- ore block inset;
-- final denomination text;
-- pseudo-lettering;
+- the badge field;
+- the ore block inset;
+- final denomination lettering;
+- pseudo-text;
 - UI elements;
-- game logo;
 - inventory bar;
 - crosshair;
-- decorative recipe strips;
+- recipe strips;
 - explanatory arrows.
 
-These belong either to the reusable asset system or are excluded entirely.
+These belong either to reusable assets or are excluded altogether.
 
-## 8. Structural composition model
+## 10. Ornament-generation rules
+
+This section addresses the main failure mode seen in earlier package attempts: thin generic overlays and visible template scaffolding.
+
+### 10.1 Ornament purpose
+
+Ornament should provide note richness, density, and local identity.
+It should not behave like a visible layout template.
+
+### 10.2 Ornament requirements
+
+Ornament generation should aim for:
+
+- density comparable to the stronger one-pass notes;
+- denomination-specific border logic;
+- denomination-specific local texture and rhythm;
+- convincing integration with the scene;
+- quiet but detailed side fields;
+- clear termination around reserved zones.
+
+### 10.3 Ornament exclusions
+
+Do not generate:
+
+- notebook-like horizontal rules;
+- placeholder panel lines;
+- template scaffolding;
+- guide lines;
+- abstract wireframe frames;
+- visible design-grid artifacts;
+- generic blank panels pretending to be note structure.
+
+### 10.4 Ornament relationship to the scene
+
+The scene remains visually primary.
+The ornament plate should enrich the note without flattening or overpowering the central image.
+
+## 11. Structural composition model
 
 Final notes are assembled from a small number of full-canvas layers.
 
-The minimal intended layer family is:
+The normal layer family is:
 
 1. scene plate;
-2. ore-label plate, recto only;
+2. badge plate, recto only;
 3. ore block asset, recto only;
-4. frame / ornament plate;
-5. value typography assets;
-6. EURO / ΕΥΡΩ / ЕВРО asset;
-7. EU flag asset;
-8. Europe map asset;
-9. optional signature or other institutional placeholders.
+4. ornament plate;
+5. numeral asset;
+6. secondary denomination asset if used;
+7. grouped euro-script asset;
+8. EU flag asset;
+9. Europe map asset;
+10. signature or placeholder assets;
+11. optional paper or print overlay if handled separately.
 
-Every layer used in final composition should be available either as:
+Every layer used in the final build should be available either as:
 
 - SVG for vector assets, or
 - transparent PNG for raster assets.
 
-For ease of deterministic composition, the build pipeline should generate full-canvas positioned PNG versions of the vector assets before flattening, even if the master asset remains SVG.
+For convenience, the build pipeline may also export full-canvas positioned PNG versions of placed vector assets.
 
-This gives two useful forms:
+## 12. Centralized layout specification
 
-- compact reusable master asset;
-- full-canvas placed layer preview.
+All stable placements belong in one centralized section of the workflow and in one YAML source of truth.
+They should not be scattered through scene prompts.
 
-The full-canvas placed versions are useful both for verification and for easy import into Paint.NET or another editor if manual adjustment is ever required.
+### 12.1 Layout source of truth
 
-## 9. Centralized layout specification
-
-The exact positions of stable elements belong here, not scattered across the whole proposal.
-
-Generated plates may remain visually unconstrained internally, but fixed note elements should be placed by documented coordinates.
-
-### 9.1 Layout source of truth
-
-Use a single `layout.yaml` as the authoritative layout file.
-
-It should define, for each note side:
+Use a single `layout.yaml` file to define, for each note side:
 
 - output width and height;
-- scene placement transform;
-- ore-label placement, recto only;
-- ore-block placement, recto only;
-- numeral placement;
-- EURO / ΕΥΡΩ / ЕВРО placement;
+- scene placement box and any offset;
+- badge placement and size, recto only;
+- ore-block placement and size, recto only;
+- main numeral placement and size;
+- grouped euro-script placement;
 - EU flag placement;
 - Europe map placement;
-- any repeated secondary institution fields;
-- z-order.
+- placeholder or signature placement;
+- z-order;
+- any mask assignments.
 
-### 9.2 Coordinate model
+### 12.2 Coordinate model
 
 Use pixel coordinates derived from the final output size.
+A simple structure is sufficient:
 
-A simple format is sufficient:
+- top-left `x`, `y`;
+- `width`, `height` for rectangles;
+- `cx`, `cy`, `diameter` or `size` for circular or square insertions;
+- optional scale and offset for scene placement.
 
-- top-left `x`, `y` coordinates;
-- width and height for boxes;
-- centre and size for circular or square insertions;
-- optional scale and offset for generated scene plates.
+### 12.3 Hard-controlled stable placements
 
-Where a common proportional rule exists, it may be expressed once and converted to pixels by script.
+At minimum, hard-control the following:
 
-### 9.3 Required fixed placements
+- badge placement and size;
+- ore-block placement and size inside the badge;
+- main numeral placement and scale;
+- grouped euro-script placement;
+- EU flag placement;
+- Europe map placement;
+- signature or placeholder placement;
+- ornament alignment;
+- any masks that clear reserved zones.
 
-At minimum, the layout specification should centrally control:
+### 12.4 Scene placement
 
-- ore-label position and size;
-- ore-block position and size inside the label;
-- main numeral position and scale;
-- secondary value placement if present;
-- EU flag box;
-- EURO / ΕΥΡΩ / ЕВРО field;
-- Europe map box;
-- signature or placeholder area;
-- final frame alignment.
-
-### 9.4 Scene placement
-
-Scene plates are the one place where some flexibility is useful.
-
-For each side, the layout may define:
+Scene plates are the one place where a small amount of placement flexibility remains useful.
+For each note side, the layout may define:
 
 - target scene box;
 - fit mode, usually `cover`;
 - optional scale factor;
 - optional `offset_x` and `offset_y`.
 
-This keeps the final layout deterministic while allowing small corrections if a generated scene needs a slight repositioning.
+This keeps the layout deterministic while allowing small corrections if a generated scene needs slight repositioning.
 
-### 9.5 Recommended structural rule
+### 12.5 Right-field guidance
 
-The note skeleton should be deterministic.
-The scene content may remain generative.
+The right institutional field must not be undersized or visually weak.
+At minimum:
 
-That division is the core logic of the package.
+- the Europe map should occupy a clearly legible lower-right field;
+- the grouped euro-script asset should have consistent size and weight across notes;
+- the EU flag should sit within a stable field of its own;
+- these elements should feel integrated into the note rather than pasted on top.
 
-## 10. Typography workflow
+## 13. Typography workflow
 
 Typography must be deterministic and reusable.
 
-### 10.1 Source
+### 13.1 Source
 
 The provided Minecraft TTF is the source.
 
-### 10.2 Derived assets
+### 13.2 Derived assets
 
 Use `build_type_assets.py` to generate:
 
@@ -474,248 +596,240 @@ Use `build_type_assets.py` to generate:
 - outlined SVG `EURO`;
 - outlined SVG `ΕΥΡΩ`;
 - outlined SVG `ЕВРО`;
-- optional transparent PNG previews of each asset.
+- the grouped euro-script stack asset;
+- optional PNG previews.
 
-### 10.3 Final use
+### 13.3 Final use
 
-The build script inserts the derived assets into each note according to `layout.yaml`.
+The build script inserts these assets according to `layout.yaml`.
+Do not rely on live text rendering during final composition.
 
-Do not rely on text rendering during final composition.
-Do not assume the font is installed externally.
-
-## 11. Composition scripts
+## 14. Python scripts
 
 The package should include a small Python toolchain.
 
-### 11.1 `build_type_assets.py`
+### 14.1 `build_type_assets.py`
 
 Purpose:
 
 - read the provided TTF;
 - generate outlined SVG lettering and numerals;
-- generate PNG previews if desired.
+- generate preview PNGs if desired.
 
-### 11.2 `build_notes.py`
+### 14.2 `build_notes.py`
 
 Purpose:
 
-- read `layout.yaml` and `palette.yaml`;
+- read `layout.yaml` and `generation-record.yaml`;
+- rasterize vector assets as needed;
 - place all layers for each note side;
-- apply deterministic scaling and positioning;
-- rasterize vector assets if needed;
+- apply deterministic scaling, masking, and placement;
 - flatten the final note PNGs;
-- optionally export full-canvas layer previews for inspection.
+- optionally export full-canvas layer previews.
 
-### 11.3 `build_contact_sheets.py`
+### 14.3 `build_contact_sheets.py`
 
 Purpose:
 
-- generate overview sheets for fast review;
+- generate overview sheets for review;
 - optionally build recto, verso, paired, and grayscale contact sheets.
 
-### 11.4 Optional layer-preview export
+## 15. YAML files
 
-The composition script may expose an option such as:
+Use YAML for the project’s small amount of structured data.
 
-- export final flattened notes only;
-- export flattened notes plus placed full-canvas layer previews.
+### 15.1 `layout.yaml`
 
-This is useful for manual inspection and optional editing, but it should not become a mandatory bloated archive.
+Stores note-by-note geometry, layer placement, masks, and z-order.
 
-## 12. YAML files
-
-Use YAML for the small amount of structured project data.
-
-### 12.1 `layout.yaml`
-
-Stores note-by-note geometry and layer placement.
-
-### 12.2 `palette.yaml`
-
-Stores denomination colour values if the build script applies any deterministic recolour or overlay treatment.
-
-This can remain simple. If colour is handled mainly in the generated plates, the palette file may only define shared UI or decorative asset colours.
-
-### 12.3 `generation-record.yaml`
+### 15.2 `generation-record.yaml`
 
 Stores a lightweight record of:
 
-- which generated plate was selected for each note side;
-- whether the Europe map SVG was tweaked;
-- whether a scene source was replaced by a corrected version;
-- any notable manual approval decision.
+- which generated components were approved for each note side;
+- whether the Europe map SVG was adjusted;
+- whether a source component was replaced by a corrected project copy;
+- any manual approval notes worth preserving.
 
 This is documentation, not bureaucracy.
 
-## 13. Construction procedure
+## 16. Construction procedure
 
-The package must include a reproducible step-by-step build sequence.
+The package must contain a reproducible build sequence.
 
-### 13.1 Prepare shared assets
+### 16.1 Prepare shared inputs
 
-1. Place the provided TTF, ore rasters, EU flag SVG, and Europe map SVG in the `assets/` tree.
-2. If the Europe map is tweaked, save the revised version as a separate approved file.
-3. Run `build_type_assets.py` to generate the deterministic typography assets.
+1. Place the provided TTF, ore rasters, EU flag SVG, and Europe map SVG in `assets/`.
+2. If the map is adjusted, save the approved project map as a separate file.
+3. Run `build_type_assets.py` to generate typography assets.
 
-### 13.2 Prepare generated intermediates
+### 16.2 Prepare generated intermediates
 
 1. Generate the twelve scene plates.
-2. Generate the six empty recto ore-label plates.
-3. Generate the required frame / ornament plates.
-4. Review them for consistency and freeze the approved versions.
+2. Generate the six denomination-specific empty badge plates.
+3. Generate the denomination-specific ornament plates.
+4. Review them for consistency, richness, and correct use of reserved zones.
+5. Freeze the approved files.
 
-### 13.3 Configure layout
+### 16.3 Configure layout
 
-1. Populate `layout.yaml` with the exact note sizes.
-2. Set the fixed placements for all stable layers.
-3. Set any scene placement offsets.
+1. Populate `layout.yaml` with the exact output sizes.
+2. Define all stable placements.
+3. Define reserved zones and masks.
+4. Define any scene-placement offsets.
 
-### 13.4 Build notes
+### 16.4 Build the notes
 
 1. Run `build_notes.py`.
-2. The script rasterizes placed vector assets as needed.
-3. The script composites all layers in the specified order.
+2. The script places all layers in the documented order.
+3. The script applies masking and deterministic placement.
 4. The script exports the final flattened note PNGs.
-5. If enabled, the script also exports placed full-canvas layer previews.
+5. If enabled, the script also exports full-canvas layer previews.
 
-### 13.5 Build contact sheets
+### 16.5 Build contact sheets
 
 1. Run `build_contact_sheets.py`.
-2. Export at least one full-series overview.
+2. Export at least one whole-series overview.
 
-## 14. Layer order for deterministic flattening
+## 17. Layer order for flattening
 
-A typical flattening order is:
+A standard flattening order is:
 
 1. scene plate;
-2. ore-label plate, recto only;
+2. badge plate, recto only;
 3. ore block, recto only;
-4. frame / ornament plate;
+4. ornament plate;
 5. main numeral;
-6. secondary denomination text if used;
-7. EURO / ΕΥΡΩ / ЕВРО;
+6. secondary denomination asset if used;
+7. grouped euro-script asset;
 8. EU flag;
 9. Europe map;
-10. signature or placeholder elements;
-11. optional common paper or print overlay if this is handled separately.
+10. signature or placeholder assets;
+11. optional paper or print overlay.
 
 The exact order may be adjusted, but it must be fixed and documented.
 
-## 15. Full-canvas support
+## 18. Full-canvas support
 
 The workflow must support full-canvas placed layer exports.
+This does not mean every master asset must exist only as a full-canvas file.
 
-This does not mean every master asset must be stored only as a full-canvas file. The useful distinction is:
+Use two complementary forms:
 
 - master asset: compact reusable source, such as SVG or cropped PNG;
 - placed layer export: full-canvas transparent PNG at final note size.
 
 For example:
 
-- `assets/maps/europe_map_master.svg`
+- `assets/maps/europe_map_project.svg`
 - `outputs/layer_previews/EUR020_recto_map.png`
 
-The first is reusable.
-The second is a placed preview for verification and optional manual work.
+The first is the reusable source.
+The second is the placed preview.
 
-This approach gives the convenience of editor-ready layer files without bloating the core asset system.
+This makes the package editor-friendly without bloating the core asset system.
 
-## 16. Final exports
+## 19. Final exports
 
 At minimum, export:
 
 - the twelve final note PNGs at the exact sizes listed in Section 1;
 - one recto contact sheet;
 - one verso contact sheet;
-- one paired contact sheet or another overall review sheet.
+- one paired or all-series review sheet.
 
 Optional useful exports include:
 
-- grayscale contact sheet;
+- grayscale contact sheets;
 - full-canvas layer previews for each note side.
 
-Do not require TIFFs, PDFs, archive nesting, or oversized review files unless they are specifically needed.
+Do not require TIFFs, PDFs, nested archives, or oversized review bundles unless they are specifically needed.
 
-## 17. Quality control
+## 20. Quality control
 
-### 17.1 Structural checks
+### 20.1 Structural checks
 
 Confirm that:
 
 - every final file matches the exact target size;
-- all fixed elements follow `layout.yaml`;
-- ore-label position and scale are consistent;
+- all stable elements follow `layout.yaml`;
+- badge placement and scale are consistent;
 - ore-block scale is consistent;
-- EU flag placement is consistent;
-- Europe map placement is consistent;
-- typography is stable and not regenerated per note.
+- the grouped euro-script block is visually uniform;
+- the Europe map is large enough and consistently placed;
+- ornament does not cross the badge or other reserved zones;
+- typography is not being regenerated per note.
 
-### 17.2 Scene checks
+### 20.2 Visual checks
 
 Confirm that:
 
 - all scene plates belong to one visual family;
-- block textures remain recognisably Minecraft;
-- rectos preserve screenshot-like directness where intended;
+- rectos preserve the desired screenshot-like directness where intended;
 - versos remain Minecraft-native rather than generic voxel fantasy;
-- saturation remains controlled;
-- no scene contains accidental pseudo-text, UI, or excluded overlays.
+- ornament density remains rich enough;
+- denomination-specific identity is preserved;
+- the scene remains visually primary.
 
-### 17.3 Reusability checks
+### 20.3 Reusability checks
 
 Confirm that:
 
-- ore blocks come from the provided assets;
+- ore cubes come from the provided assets;
 - the EU flag is reused rather than redrawn;
-- the Europe map is reused from the approved source;
+- the Europe map comes from the approved shared source;
 - typography comes from derived font assets rather than image generation;
-- changing one swappable component and rerunning the script updates the finished note without manual reconstruction.
+- changing one swappable element and rerunning the script updates the finished note without manual reconstruction.
 
-## 18. Intended editing model
+## 21. Intended editing model
 
-This package is designed so that a change to one component does not require rebuilding the whole note by hand.
+This workflow is designed so that a change to one component does not require rebuilding the whole note by hand.
 
 Examples:
 
-- replace one scene plate, rerun the script, get the updated note;
-- adjust the ore-label position in `layout.yaml`, rerun the script, update all rectos;
-- tweak the map SVG once, rerun the script, update all notes that use it;
-- refine the numeral SVGs, rerun the script, update all notes.
+- replace one scene plate, rerun the script, and get the updated note;
+- replace one ornament plate, rerun the script, and compare results immediately;
+- change badge placement in `layout.yaml`, rerun the script, and update all relevant rectos;
+- adjust the grouped euro-script asset once, rerun the script, and update all notes;
+- adjust the Europe map SVG once, rerun the script, and update all notes that use it.
 
 That is the practical measure of success.
 
-## 19. What this workflow deliberately avoids
+## 22. What this workflow avoids
 
-This package deliberately avoids:
+This workflow deliberately avoids:
 
+- one universal ornament template recolored across the whole series;
+- visible layout guides or scaffold-like frame generation;
 - fake print-production complexity;
-- giant flattened duplicates of every possible variant;
+- redundant oversized duplicates;
 - CSV manifests and checksum bureaucracy;
-- archives within archives;
 - unstable AI-generated text;
-- re-generating assets that should be reused;
-- forcing the image model to solve layout over and over again;
-- treating every decorative decision as a separate professional pipeline.
+- re-generating stable assets;
+- asking the model to rediscover the note layout every time;
+- decomposing the note into many tiny layers that provide little editing value.
 
-The goal is not to simulate a central-bank production archive.
-The goal is to create a clean, swappable, reproducible design kit that builds the final fictional notes deterministically.
+The objective is a clean, swappable, reproducible package that preserves the visual richness of the best note renders while keeping the final build deterministic.
 
-## 20. Minimum final package checklist
+## 23. Minimum package checklist
 
 Before delivery, confirm that the package includes:
 
-- documentation in Markdown;
+- `design-package.md`;
+- the proposal file used for the series;
+- `README.md`;
 - Python build scripts;
 - `layout.yaml`;
+- `generation-record.yaml`;
 - provided ore rasters;
 - provided TTF;
 - provided EU flag SVG;
-- original and approved Europe map SVG if edited;
+- original and approved project Europe map SVG, if adjusted;
 - generated scene plates;
-- generated ore-label plates;
-- generated frame plates;
+- generated denomination-specific badge plates;
+- generated denomination-specific ornament plates;
 - derived typography assets;
 - the twelve final flattened note PNGs;
 - at least one contact sheet.
 
-If the recipient can open the package, inspect the assets, run the scripts, and immediately view the final notes without reconstructing them manually, the package has succeeded.
+If a reviewer can open the package, inspect the assets, run the scripts, and view the finished notes immediately without manual reconstruction, the package has succeeded.

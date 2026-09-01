@@ -1,0 +1,28 @@
+version: 1
+project: Crafting Europe
+scene_method: OpenAI built-in image generation, one prompt per scene plate
+scene_storage: lossless indexed-colour PNG after approved selection
+selected_scenes:
+  EUR005_recto: generated/scenes/EUR005_recto_scene.png
+  EUR005_verso: generated/scenes/EUR005_verso_scene.png
+  EUR010_recto: generated/scenes/EUR010_recto_scene.png
+  EUR010_verso: generated/scenes/EUR010_verso_scene.png
+  EUR020_recto: generated/scenes/EUR020_recto_scene.png
+  EUR020_verso: generated/scenes/EUR020_verso_scene.png
+  EUR050_recto: generated/scenes/EUR050_recto_scene.png
+  EUR050_verso: generated/scenes/EUR050_verso_scene.png
+  EUR100_recto: generated/scenes/EUR100_recto_scene.png
+  EUR100_verso: generated/scenes/EUR100_verso_scene.png
+  EUR200_recto: generated/scenes/EUR200_recto_scene.png
+  EUR200_verso: generated/scenes/EUR200_verso_scene.png
+shared_assets:
+  font: supplied Minecraft.ttf; used for Latin, numerals, and euro sign
+  supplemental_scripts: Greek and Cyrillic strings use matching project-owned block-grid outlines because the supplied font lacks those code points
+  europe_flag: supplied SVG, unchanged
+  europe_map: supplied SVG, unchanged
+  ore_blocks: supplied WEBP rasters, unchanged in content
+map_tweaked: false
+scene_repairs: none
+frame_method: deterministic Pillow geometry from palette and pattern rules
+ore_label_method: deterministic Pillow geometry from palette and pattern rules
+approval_note: Scene plates selected for cross-series coherence, denomination distinction, and Minecraft-native readability.

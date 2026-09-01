@@ -1,0 +1,39 @@
+paper: '#eee8d8'
+ink_neutral: '#241f20'
+notes:
+  EUR005:
+    dominant: '#666765'
+    light: '#e8e6dc'
+    dark: '#292b2a'
+    accent: '#b36a35'
+    pattern: strata
+  EUR010:
+    dominant: '#8d474b'
+    light: '#eadbd8'
+    dark: '#3d242b'
+    accent: '#d5423f'
+    pattern: signal
+  EUR020:
+    dominant: '#586f99'
+    light: '#e3e4df'
+    dark: '#24344e'
+    accent: '#244bb8'
+    pattern: manuscript
+  EUR050:
+    dominant: '#a36b4f'
+    light: '#ebdfcf'
+    dark: '#4d332b'
+    accent: '#4d8a7a'
+    pattern: conductive
+  EUR100:
+    dominant: '#4f7861'
+    light: '#e0e8df'
+    dark: '#213f32'
+    accent: '#21a75d'
+    pattern: lattice
+  EUR200:
+    dominant: '#aa8240'
+    light: '#eee3c7'
+    dark: '#4b3523'
+    accent: '#d3a82f'
+    pattern: rings

@@ -1,0 +1,19 @@
+{
+  "title": "Crafting Europe",
+  "version": "concept-validation-1",
+  "format": "flattened PNG plates",
+  "files": [
+    {"file": "images/EUR005_recto.png", "value": 5, "side": "recto", "material": "coal", "function": "energy", "width": 1800, "height": 930},
+    {"file": "images/EUR005_verso.png", "value": 5, "side": "verso", "material": "coal", "function": "energy", "width": 1800, "height": 930},
+    {"file": "images/EUR010_recto.png", "value": 10, "side": "recto", "material": "redstone", "function": "automation and information", "width": 1778, "height": 938},
+    {"file": "images/EUR010_verso.png", "value": 10, "side": "verso", "material": "redstone", "function": "automation and information", "width": 1778, "height": 938},
+    {"file": "images/EUR020_recto.png", "value": 20, "side": "recto", "material": "lapis lazuli", "function": "knowledge and culture", "width": 1729, "height": 936},
+    {"file": "images/EUR020_verso.png", "value": 20, "side": "verso", "material": "lapis lazuli", "function": "knowledge and culture", "width": 1729, "height": 936},
+    {"file": "images/EUR050_recto.png", "value": 50, "side": "recto", "material": "copper", "function": "infrastructure", "width": 1700, "height": 935},
+    {"file": "images/EUR050_verso.png", "value": 50, "side": "verso", "material": "copper", "function": "infrastructure", "width": 1700, "height": 935},
+    {"file": "images/EUR100_recto.png", "value": 100, "side": "recto", "material": "emerald", "function": "exchange and trust", "width": 1617, "height": 902},
+    {"file": "images/EUR100_verso.png", "value": 100, "side": "verso", "material": "emerald", "function": "exchange and trust", "width": 1617, "height": 902},
+    {"file": "images/EUR200_recto.png", "value": 200, "side": "recto", "material": "gold", "function": "reserve and continuity", "width": 1683, "height": 902},
+    {"file": "images/EUR200_verso.png", "value": 200, "side": "verso", "material": "gold", "function": "reserve and continuity", "width": 1683, "height": 902}
+  ]
+}

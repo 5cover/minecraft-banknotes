@@ -16,11 +16,11 @@ The series follows how shared infrastructure supports information, information e
 
 | Denomination | Motif          | Series function                                       |
 | ------------ | -------------- | ----------------------------------------------------- |
-| €5           | Infrastructure | Stable substrate for shared life; public service      |
+| €5           | Infrastructure | Stable substrate for shared life and public service   |
 | €10          | Information    | Knowledge, coordination, and public memory            |
 | €20          | Mobility       | Movement, connection, and adaptation                  |
 | €50          | Interpretation | Culture, plurality, and shared meaning                |
-| €100         | Environment    | Belonging expressed through stewardship               |
+| €100         | Environment    | Belonging instills stewardship                        |
 | €200         | Future         | Open possibility and intergenerational responsibility |
 
 ## 1. Executive summary
@@ -35,13 +35,13 @@ The six denominations form a dependency tree rather than a scale of importance.
 
 Infrastructure supports information because knowledge requires a stable physical substrate: electricity, water, buildings, public administration, schools, laboratories, archives, and communication networks.
 
-Information supports mobility because purposeful movement depends on maps, schedules, signals, forecasts, coordination, and shared data. Mobility is broader than transport. It is the capacity of people and institutions to move, connect, respond, and change.
+Information supports mobility because purposeful movement depends on maps, schedules, signals, forecasts, coordination, and shared data. Mobility is broader than transport. It is the capacity of people and institutions to move, connect, adapt, and evolve.
 
 Mobility supports interpretation because culture grows through contact among different places, languages, experiences, and points of view. Movement multiplies perspectives.
 
 Interpretation supports environmental stewardship because people are more likely to care for places they understand as meaningful. Culture produces attachment to a street, river, landscape, community, and shared inheritance.
 
-Environmental stewardship supports the future because the future depends on ecological, social, and institutional conditions preserved or renewed in the present.
+Environmental stewardship supports the future because a healthy future requires continued maintenance and renewal of environments : ecological, social, and institutional.
 
 The progression is one possible account of how European values relate. It does not claim that each system has only one cause or one consequence. The purpose is to create a coherent series in which every denomination has a distinct role and every transition can be understood.
 
@@ -71,7 +71,7 @@ The shared European dimension lies in networks that cross borders without erasin
 
 The central tension is optimism and responsibility.
 
-The visual language is optimistic. It presents clean air, clear water, legible systems, accessible institutions, and technology integrated with public life. The proposal does not treat these conditions as automatic. Each scene includes evidence of maintenance, coordination, repair, access, and stewardship. The optimism is credible because it is supported by work.
+The visual language is optimistic. It presents clean air, clear water, legible systems, accessible institutions, and technology integrated with public life. The proposal does not treat these conditions as automatic. Versoes reveal maintenance, coordination, repair, access, and stewardship. The optimism is credible because it is supported by work.
 
 ### 2.2 Narrative
 

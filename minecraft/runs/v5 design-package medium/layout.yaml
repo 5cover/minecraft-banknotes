@@ -1,0 +1,23 @@
+version: 1
+coordinate_model: normalized
+common:
+  main_value: {x: 0.035, y: 0.055, w: 0.205, h: 0.355}
+  secondary_value: {x: 0.055, y: 0.755, w: 0.13, h: 0.10}
+  euro_scripts: {x: 0.755, y: 0.145, w: 0.205, h: 0.12}
+  flag: {x: 0.815, y: 0.055, w: 0.105, h: 0.070}
+  map: {x: 0.765, y: 0.455, w: 0.185, h: 0.315}
+  signature: {x: 0.755, y: 0.805, w: 0.205, h: 0.055}
+  serial: {x: 0.285, y: 0.865, w: 0.34, h: 0.045}
+  ore_label: {cx: 0.705, cy: 0.49, diameter_h: 0.39}
+  ore_block: {size_h: 0.255}
+  scene: {x: 0, y: 0, w: 1, h: 1, fit: cover, offset_x: 0, offset_y: 0}
+notes:
+  EUR005: {value: 5, width: 1800, height: 930, ore: coal}
+  EUR010: {value: 10, width: 1778, height: 938, ore: redstone}
+  EUR020: {value: 20, width: 1729, height: 936, ore: lapis}
+  EUR050: {value: 50, width: 1700, height: 935, ore: copper}
+  EUR100: {value: 100, width: 1617, height: 902, ore: emerald}
+  EUR200: {value: 200, width: 1683, height: 902, ore: gold}
+z_order:
+  recto: [scene, ore_label, ore_block, frame, main_value, secondary_value, euro_scripts, flag, map, signature, serial, print_overlay]
+  verso: [scene, frame, main_value, secondary_value, euro_scripts, flag, map, signature, serial, print_overlay]
