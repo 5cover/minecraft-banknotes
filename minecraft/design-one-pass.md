@@ -49,7 +49,7 @@ Use mildly saturated denomination colours. The note should look printed rather t
 
 Use Minecraft typeface lettering for the large denomination and for `EURO ΕΥΡΩ ЕВРО`. Do not use a generic sans-serif face and do not invent extra text.
 
-The European flag, euro scripts, map, and signature field must appear integrated into the note through the same paper and print treatment. The flag must not appear as a flat saturated rectangle pasted over the scene.
+The European flag, euro scripts, map, and signature field must appear integrated into the note.
 
 Describe a consistent silhouette, projection, orientation, relative scale, and print treatment for every common component in the prompt for each of the twelve images.
 

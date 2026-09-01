@@ -1,0 +1,47 @@
+version: 1
+coordinate_system: pixels
+layer_order: [scene, badge, ore, ornament, main_value, secondary_value, euro_scripts, eu_flag, europe_map, signature, print_overlay]
+notes:
+  EUR005:
+    value: "5"
+    motif: coal
+    palette: {paper: "#e8e4db", ink: "#303436", dark: "#171a1b", accent: "#c66b2b"}
+    size: [1800, 930]
+  EUR010:
+    value: "10"
+    motif: redstone
+    palette: {paper: "#eadbd7", ink: "#7b2c32", dark: "#321c22", accent: "#d53535"}
+    size: [1778, 938]
+  EUR020:
+    value: "20"
+    motif: lapis
+    palette: {paper: "#e5e1d5", ink: "#405f82", dark: "#1e3048", accent: "#2359ad"}
+    size: [1729, 936]
+  EUR050:
+    value: "50"
+    motif: copper
+    palette: {paper: "#eadcc8", ink: "#8c5237", dark: "#422d27", accent: "#4f8b78"}
+    size: [1700, 935]
+  EUR100:
+    value: "100"
+    motif: emerald
+    palette: {paper: "#dfe7dc", ink: "#346247", dark: "#183628", accent: "#2f9b58"}
+    size: [1617, 902]
+  EUR200:
+    value: "200"
+    motif: gold
+    palette: {paper: "#eee0bd", ink: "#8a651f", dark: "#3e2c1d", accent: "#d39b24"}
+    size: [1683, 902]
+common_layout:
+  scene: {x_pct: 0, y_pct: 0, width_pct: 100, height_pct: 100, fit: cover}
+  left_value_field: {x_pct: 0, y_pct: 0, width_pct: 18, height_pct: 100}
+  right_institutional_field: {x_pct: 81, y_pct: 0, width_pct: 19, height_pct: 100}
+  main_value: {x_pct: 2.4, y_pct: 8.5, width_pct: 15, height_pct: 32}
+  secondary_value: {x_pct: 3.0, y_pct: 76, width_pct: 10, height_pct: 11}
+  euro_scripts: {x_pct: 83.0, y_pct: 24, width_pct: 14.5, height_pct: 24}
+  eu_flag: {x_pct: 84.0, y_pct: 7.5, width_pct: 11.5, height_pct: 12.5}
+  europe_map: {x_pct: 82.5, y_pct: 55, width_pct: 15.5, height_pct: 31}
+  signature: {x_pct: 83.5, y_pct: 88, width_pct: 13, height_pct: 4}
+  badge: {x_pct: 65.0, y_pct: 31, width_pct: 17.5, height_pct: 39}
+  ore: {x_pct: 68.15, y_pct: 38.5, width_pct: 11.2, height_pct: 24}
+reserved_zones: [main_value, euro_scripts, eu_flag, europe_map, signature, badge]
