@@ -1,14 +1,14 @@
-# Crafting Europe
+# One-pass concept validation brief
 
-## One-pass concept validation brief
-
-### Purpose
+## Purpose
 
 Generate twelve complete banknote images in one pass per image: one recto and one verso for each denomination.
 
 These images are concept-validation plates. They test the natural-recto and constructed-verso narrative, denomination identity, Minecraft recognition, colour restraint, common layout, and especially whether the twelve notes read as one coherent visual series before final layered construction.
 
 The one-pass workflow deliberately does less than the layered design-package workflow. It does not split reusable assets or attempt deterministic assembly. Its purpose is to test the concept quickly as complete finished-looking plates. Because the images remain flattened, visual consistency between denominations is especially important.
+
+They test the natural-recto and constructed-verso narrative, denomination identity, Minecraft recognition, colour restraint, and common layout before final layered construction.
 
 Do not create variants, alternate compositions, or extra exploratory images. Generate exactly the twelve files listed below.
 

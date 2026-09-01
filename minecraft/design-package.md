@@ -1,6 +1,8 @@
-# Reproducible layered design package specification
+# Crafting Europe
 
-## Purpose
+## Layered professional design package specification
+
+### Purpose
 
 This document defines the practical production workflow for the final twelve banknote images.
 
