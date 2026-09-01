@@ -1,22 +1,30 @@
-design package goes too far maybe?
+i think design package goes too far into a professional projection? i ran it on v4, and well, it created monochrome renders, unreproducible pngs from flattened layers, created artificial frames that don't exist in the export file. i think the prompt is just trying to do too much at once. it created a 237mb archive.
 
-what i actually want
+what i actually want is more simple than this. separate elements.
 
-separate layers
+- so we can turn into assets what can be turned into an asset
+- layer composition so the final arrangment becomes tweakable
+- separate AI generation from the final, deterministic composition
+
+the idea is this : the package should contain intermediates and the finished notes built deterministically from it. it should prefer vector images when possible. it should be self contained, and include all provided assets.
+so the final result can be seen without spending 30 minutes reconstructing everything in paint.net
+
+markdown files contain documentation with the reproducible construction procedure.
+python scripts used for construction are also provided
+
+layers:
 
 - generated: the scene plate
-- generated: the badge
+- generated: the ore label shape, decorations and field, but it is empty : the isometric block is an asset
 - generated: the frame, details and decorations
-- asset: the ore block 3d texture inside it
+- asset: each isometric ore block
 - asset: eu map
 - asset: eu flag
 - asset: EURO / EYPO / EBPO lettering
+(and anything else i'm forgetting)
+
+i have also acquried the minecraft typeface i want to use for the value and EURO lettering. how should we use it? should we refer to it in svg text elements hoping the renderer knows the font, or use the ttf file directly?
+
+design work can compose these layers into a PDN files, maybe with python package pypdn. I don't know if you have the ability to work with Paint.NET, but this is what i use.
 
 one thing that matters, and i think the workflow file needs to emphasize on this, is maintain a consistent style and visual grammar between scene plates of different denominations. use broadly the same level of detail. i've had instances where the AI imagines another style, smooths blocks, or changes texture between denominations.
-
----
-
-something i've noticed is that currently, since recto plates are much more simple, the AI generates much more game accurate scenes than for the versoes. I like them better, actually. for instance, redstone recto, almost looks like a cropped screenshot from inside a cave. and that's what I want!
-the frame and other elements turn it into a realistic looking note. it doesn't currently do this consistently for all denominations, so it should be explicitly requested.
-meanwhile, most versoes (except the redstone one, since it is still "one building" and the AI usually does a pretty good job at producing game-believable scene from it) look much more like a "block fanstasy world" overview, which I think happens since the scene is much larger / complex and there's no direct "minecraft" translation, so the AI conjures something. it's not bad. it's just that it interprets minecraft into a scene expressing the meaning of the note. when what i want is the other way around : create a scene from minecraft element that represents the note and the concepts behind it.
-What would you change for the next version, version 5. Don't rewrite it yet.
