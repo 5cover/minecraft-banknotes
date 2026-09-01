@@ -1,0 +1,38 @@
+{
+  "EUR005": {
+    "paper": "#EEEDE6",
+    "dominant": "#6B6D6C",
+    "dark": "#303334",
+    "accent": "#7C846F"
+  },
+  "EUR010": {
+    "paper": "#EFE5E4",
+    "dominant": "#854650",
+    "dark": "#4A292E",
+    "accent": "#A4464F"
+  },
+  "EUR020": {
+    "paper": "#EEE9DC",
+    "dominant": "#6C8197",
+    "dark": "#344858",
+    "accent": "#3E6393"
+  },
+  "EUR050": {
+    "paper": "#F0E5D7",
+    "dominant": "#A66B4B",
+    "dark": "#5C3C2E",
+    "accent": "#708C82"
+  },
+  "EUR100": {
+    "paper": "#E7ECE5",
+    "dominant": "#587762",
+    "dark": "#30493A",
+    "accent": "#41845B"
+  },
+  "EUR200": {
+    "paper": "#F1E8D5",
+    "dominant": "#AF8948",
+    "dark": "#5D4A2B",
+    "accent": "#C39A3F"
+  }
+}

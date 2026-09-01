@@ -1,0 +1,9 @@
+layer,name,source
+05,paper base,shared deterministic raster
+10,scene plate,selected generated source
+20,value field,deterministic composition
+30,institutional field,deterministic composition
+40,ore label,recto only
+50,frame and border,deterministic composition
+60,tactile and safety reservations,deterministic composition
+90,flat review export,assembled

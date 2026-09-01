@@ -12,38 +12,38 @@ Do not create variants, alternate compositions, or extra exploratory images. Gen
 
 ## 1. Output list and exact dimensions
 
-Use a base height of 1000 pixels. Vary the width according to the current euro denomination proportions.
+Scaling aspect ratios to a maximum height of 938 pixels.
 
-| File               | Side       |           Size |
-| ------------------ | ---------- | -------------: |
-| `EUR005_recto.png` | €5 recto   | 1935 × 1000 px |
-| `EUR005_verso.png` | €5 verso   | 1935 × 1000 px |
-| `EUR010_recto.png` | €10 recto  | 1896 × 1000 px |
-| `EUR010_verso.png` | €10 verso  | 1896 × 1000 px |
-| `EUR020_recto.png` | €20 recto  | 1847 × 1000 px |
-| `EUR020_verso.png` | €20 verso  | 1847 × 1000 px |
-| `EUR050_recto.png` | €50 recto  | 1818 × 1000 px |
-| `EUR050_verso.png` | €50 verso  | 1818 × 1000 px |
-| `EUR100_recto.png` | €100 recto | 1909 × 1000 px |
-| `EUR100_verso.png` | €100 verso | 1909 × 1000 px |
-| `EUR200_recto.png` | €200 recto | 1987 × 1000 px |
-| `EUR200_verso.png` | €200 verso | 1987 × 1000 px |
+| File               | Side       | Aspect ratio | Scale by |          Size |
+| ------------------ | ---------- | ------------ | -------- | ------------: |
+| `EUR005_recto.png` | €5 recto   | 60:31        | 30       | 1800 × 930 px |
+| `EUR005_verso.png` | €5 verso   | 60:31        | 30       | 1800 × 930 px |
+| `EUR010_recto.png` | €10 recto  | 127:67       | 14       | 1778 × 938 px |
+| `EUR010_verso.png` | €10 verso  | 127:67       | 14       | 1778 × 938 px |
+| `EUR020_recto.png` | €20 recto  | 133:72       | 13       | 1729 × 936 px |
+| `EUR020_verso.png` | €20 verso  | 133:72       | 13       | 1729 × 936 px |
+| `EUR050_recto.png` | €50 recto  | 20:11        | 85       | 1700 × 935 px |
+| `EUR050_verso.png` | €50 verso  | 20:11        | 85       | 1700 × 935 px |
+| `EUR100_recto.png` | €100 recto | 147:82       | 11       | 1617 × 902 px |
+| `EUR100_verso.png` | €100 verso | 147:82       | 11       | 1617 × 902 px |
+| `EUR200_recto.png` | €200 recto | 153:82       | 11       | 1683 × 902 px |
+| `EUR200_verso.png` | €200 verso | 153:82       | 11       | 1683 × 902 px |
 
 Every note fills its canvas exactly. Use straight edges, no outer paper margin, no rotation, no perspective distortion, no drop shadow, and no surrounding background.
 
 ## 2. Common visual direction
 
-The world must be immediately recognisable as Minecraft without looking like an unmodified screenshot or a generic medieval voxel setting.
+The world must be immediately recognisable as Minecraft.
 
 Use familiar Minecraft terrain morphology, canonical or near-canonical block textures, recognisable object proportions, characteristic vegetation, and game-native mechanisms.
 
 Do not draw a dark contour around every cube. Adjacent blocks of the same material should often read as continuous surfaces. Cubic construction is communicated through stepped terrain, texture changes, shadows, and material boundaries.
 
-Use a hybrid print treatment. Preserve Minecraft textures and forms, then add restrained banknote linework, paper tone, guilloche, subtle overprint, and selective engraving. Do not convert every surface into dense intaglio.
+Use a hybrid print treatment. Preserve Minecraft textures and forms, then add some restrained banknote linework, paper tone, guilloche, subtle overprint, and selective engraving.
 
 Use mildly saturated denomination colours. The note should look printed rather than backlit.
 
-Use Minecraft-derived pixel lettering for the large denomination and for `EURO ΕΥΡΩ ЕВРО`. Do not use a generic sans-serif face and do not invent extra text.
+Use Minecraft typeface lettering for the large denomination and for `EURO ΕΥΡΩ ЕВРО`. Do not use a generic sans-serif face and do not invent extra text.
 
 The European flag, euro scripts, map, and signature field must appear integrated into the note through the same paper and print treatment. The flag must not appear as a flat saturated rectangle pasted over the scene.
 

@@ -1,5 +1,7 @@
 # Crafting Europe
 
+Version 4
+
 ## Euro banknote design concept
 
 ### Independent alternative thematic study assessed under the published design-contest framework

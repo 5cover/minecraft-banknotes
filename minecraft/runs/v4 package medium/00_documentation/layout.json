@@ -1,0 +1,18 @@
+{
+  "working_px_per_mm": 20,
+  "bleed_mm": 3,
+  "recto": {
+    "value_field_width": 0.18,
+    "institutional_field_start": 0.7,
+    "ore_label_center": [
+      0.685,
+      0.5
+    ],
+    "ore_label_diameter_h": 0.44
+  },
+  "verso": {
+    "value_field_width": 0.15,
+    "institutional_field_start": 0.82
+  },
+  "optical_corrections": {}
+}
