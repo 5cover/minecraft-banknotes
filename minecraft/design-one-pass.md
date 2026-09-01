@@ -6,7 +6,9 @@
 
 Generate twelve complete banknote images in one pass per image: one recto and one verso for each denomination.
 
-These images are concept-validation plates. They test the natural-recto and constructed-verso narrative, denomination identity, Minecraft recognition, colour restraint, and common layout before final layered construction.
+These images are concept-validation plates. They test the natural-recto and constructed-verso narrative, denomination identity, Minecraft recognition, colour restraint, common layout, and especially whether the twelve notes read as one coherent visual series before final layered construction.
+
+The one-pass workflow deliberately does less than the layered design-package workflow. It does not split reusable assets or attempt deterministic assembly. Its purpose is to test the concept quickly as complete finished-looking plates. Because the images remain flattened, visual consistency between denominations is especially important.
 
 Do not create variants, alternate compositions, or extra exploratory images. Generate exactly the twelve files listed below.
 
@@ -33,13 +35,15 @@ Every note fills its canvas exactly. Use straight edges, no outer paper margin, 
 
 ## 2. Common visual direction
 
-The world must be immediately recognisable as Minecraft.
+The twelve plates must read as one visual family.
 
-Use familiar Minecraft terrain morphology, canonical or near-canonical block textures, recognisable object proportions, characteristic vegetation, and game-native mechanisms.
+The world must be immediately recognisable as Minecraft. Begin from Minecraft itself rather than from an abstract civic scene translated into cubes. Use familiar Minecraft terrain morphology, canonical or near-canonical block textures, recognisable object proportions, characteristic vegetation, ordinary building materials, familiar workstations, and game-native mechanisms.
 
-Do not draw a dark contour around every cube. Adjacent blocks of the same material should often read as continuous surfaces. Cubic construction is communicated through stepped terrain, texture changes, shadows, and material boundaries.
+A useful test is to imagine the banknote frame removed. The central illustration should still read as a carefully composed Minecraft view rather than generic voxel concept art. Rectos may approach the directness of cropped in-game views. Versos may be more ambitious constructions, but they should still be made from recognisable Minecraft objects, mechanics, and building vocabulary.
 
-Use a hybrid print treatment. Preserve Minecraft textures and forms, then add some restrained banknote linework, paper tone, guilloche, subtle overprint, and selective engraving.
+Do not draw a dark contour around every cube. Adjacent blocks of the same material should often read as continuous surfaces. Cubic construction is communicated through stepped terrain, texture changes, shadows, silhouettes, and material boundaries.
+
+Use a hybrid print treatment. Preserve Minecraft textures and forms, then add restrained banknote linework, paper tone, guilloche, subtle overprint, and selective engraving. The monetary treatment should frame and integrate the Minecraft world rather than repaint the whole scene into historical engraving.
 
 Use mildly saturated denomination colours. The note should look printed rather than backlit.
 
@@ -47,15 +51,43 @@ Use Minecraft typeface lettering for the large denomination and for `EURO ΕΥΡ
 
 The European flag, euro scripts, map, and signature field must appear integrated into the note through the same paper and print treatment. The flag must not appear as a flat saturated rectangle pasted over the scene.
 
-Dscribe consistent silhouette, projection, orientation, and relative scale for every common component in the prompt for each of the twelve images.
+Describe a consistent silhouette, projection, orientation, relative scale, and print treatment for every common component in the prompt for each of the twelve images.
+
+### 2.1 Series consistency
+
+Consistency is a primary requirement of the one-pass workflow. The twelve images are generated separately, but they should look as though they belong to one designed series.
+
+Maintain broadly the same across all denominations:
+
+- Minecraft texture sharpness and sampling;
+- apparent block scale and object legibility;
+- lighting naturalism;
+- edge treatment;
+- level of environmental detail;
+- density of banknote ornament;
+- amount of selective engraving;
+- paper and print character;
+- saturation restraint;
+- typography system;
+- institutional-field treatment;
+- ore-label treatment;
+- overall seriousness and finish.
+
+Do not let one denomination become smooth voxel art, another become painterly fantasy, another become heavily engraved, and another resemble a raw game screenshot. Differences should come from the denomination subject, palette, terrain, and scene structure, not from a change of rendering style.
+
+When the generation system permits image references, use one or more successful earlier plates as visual references for later plates. Use them to preserve texture behaviour, detail density, print treatment, and overall visual grammar, not to copy their composition.
+
+Before moving from one denomination to the next, compare the new plate with the existing series. Correct style drift rather than accepting a locally attractive image that breaks the family.
 
 ## 3. Common recto composition
 
-Use the same proportional arrangement for all six rectos.
+Use the same broad proportional arrangement for all six rectos. Exact coordinates do not need to be identical in the one-pass workflow, but the overall balance of value field, scene, ore label, and institutional field should remain visibly related.
 
 The left field contains the large denomination numeral, a smaller repeated value, the euro symbol, and a quiet patterned background.
 
 The centre contains one coherent natural Minecraft landscape. It is a landscape, cave, ravine, or exterior formation viewed from a single camera position. Do not combine a perspective landscape with a geological cutaway or expose invisible underground layers.
+
+The scene should preserve the directness of an in-game Minecraft view. Canonical terrain, texture scale, lighting, water, vegetation, cave behaviour, and visible ore should remain legible enough that the central scene would still read as Minecraft without the surrounding currency design.
 
 The ore label is offset to the right, near the transition between landscape and institutional field. It is circular, near-white, softly tinted with the denomination colour, and approximately the same size relative to note height on every recto.
 
@@ -69,9 +101,15 @@ Recto borders use abstract material rhythm only. Do not add minecarts, furnaces,
 
 ## 4. Common verso composition
 
-Use the same broad value-field, panorama, and institutional-field structure for every verso.
+Use the same broad value-field, constructed-scene, and institutional-field structure for every verso.
 
-The central image is one integrated constructed Minecraft environment. Material uses must be understood from workshops, buildings, machines, transport, streets, interiors, agriculture, study, exchange, and public life.
+Each reverse has one dominant Minecraft-native subject. Supporting uses remain visible, but they are subordinate to that subject. The note should be recognisable by its principal form before small details are inspected.
+
+Use an elevated oblique viewpoint across the series, but keep the camera close enough that canonical blocks, workstations, rails, redstone components, bookshelves, villagers, storage, and other game objects remain identifiable. Avoid distant whole-city panoramas that force the model to invent large amounts of generic voxel architecture.
+
+The central image is one integrated constructed Minecraft environment. Material uses must be understood from recognisable game objects, buildings, machines, transport, streets, interiors, agriculture, study, exchange, and public life.
+
+Do not begin from an abstract European institution and then turn it into cubes. Begin from Minecraft nouns and actions, then arrange them so the scene carries the denomination concept.
 
 Do not add a recipe panel, arrowed stages, row of application icons, lower strip of transformations, or mandatory line running across the note.
 
@@ -93,9 +131,13 @@ The pale label contains one canonical coal-ore block.
 
 ### 5.2 €5 coal verso
 
-Show a Minecraft industrial district shaped by coal, heat, rail transport, and metallurgy.
+Show a large Minecraft furnace and smelting complex as the dominant subject.
 
-Include recognisable minecarts, rails, chests, hoppers, furnaces, blast furnaces, storage, smithing, workshops, an iron bridge, station structures, and a town supported by the industrial network.
+Build it from recognisable furnaces, blast furnaces, hoppers, chests, minecarts, rails, anvils, smithing areas, fuel storage, stone, brick, and iron. Repeated furnace mouths, loading bays, hopper banks, and rail intake should make the note identifiable as the furnace note.
+
+Minecarts bring coal into the complex. Iron ore enters through a separate intake. Finished metal supports a limited number of nearby workshops, bridge works, and station structures.
+
+Keep the surrounding settlement subordinate. Do not turn the scene into a general industrial fantasy city.
 
 Integrate limited smoke into the sky and print texture. Include a restrained area of repaired ground and replanted vegetation.
 
@@ -113,11 +155,15 @@ The pale label contains one canonical redstone-ore block.
 
 ### 5.4 €10 redstone verso
 
-Show one Minecraft civic and productive environment organised by redstone systems.
+Show a large Minecraft redstone automation and logic build as the dominant subject.
 
-Include recognisable dust, torches, repeaters, comparators, observers, pistons, lamps, note blocks, hoppers, an automated farm, item sorting, controlled doors, rail signalling, lighting, a compact logic hall, and a teaching or research space.
+Use recognisable redstone dust, torches, repeaters, comparators, observers, pistons, lamps, note blocks, hoppers, doors, rails, sorting systems, and controlled mechanisms. Open façades, roofless sections, or transparent areas may reveal the machinery.
 
-Distribute these systems through one environment rather than arranging them as a circuit diagram or ordered list.
+An automated farm, item sorting, controlled doors, rail signalling, lighting, and a compact teaching or testing area may appear as secondary applications connected to the central build.
+
+Keep the architecture straightforward and Minecraft-native. Do not turn the logic hall into a fantasy technology palace.
+
+Distribute the systems through one coherent environment rather than arranging them as a circuit diagram or ordered list.
 
 ### 5.5 €20 lapis lazuli recto
 
@@ -129,11 +175,15 @@ The pale label contains one canonical lapis-ore block.
 
 ### 5.6 €20 lapis lazuli verso
 
-Show one Minecraft civic complex devoted to knowledge and culture.
+Show a large Minecraft library and enchanting complex as the dominant subject.
 
-Include a pigment and manuscript workshop, library, bookshelves, enchanting table, classroom, map room, observatory, stained glass, bookbinding, laboratory table, public reading area, and improved tools used in surveying, construction, agriculture, conservation, and repair.
+Begin with recognisable bookshelves, lecterns, enchanting tables, maps, item frames, chests, desks, glass, familiar stone and wood, stairs, slabs, courtyards, and visible work areas. The scene should first look like an ambitious Minecraft learning build, not a fantasy university translated into blocks.
 
-Treat enchanting as accumulated knowledge rather than glowing fantasy spectacle.
+A central library hall or courtyard anchors the image. Pigment preparation, bookbinding, map work, teaching, observation, restoration, and enchanting occupy subordinate spaces.
+
+Treat enchanting as accumulated knowledge improving practical capability rather than as glowing fantasy spectacle.
+
+Do not force every cultural use into the scene. Prefer a smaller number of strong Minecraft-native elements with clear relationships.
 
 ### 5.7 €50 copper recto
 
@@ -145,11 +195,15 @@ The pale label contains one canonical copper-ore block.
 
 ### 5.8 €50 copper verso
 
-Show one Minecraft city whose public systems depend on copper.
+Show a major Minecraft bridge and public-service span as the dominant subject.
 
-Include preparation workshops, copper roofs at several oxidation stages, public lighting, lightning rods, bridges, water channels, an observatory with a spyglass, an archaeological workspace using a brush, transport buildings, and maintenance yards.
+Build it from recognisable stone, brick, copper blocks in several oxidation states, rails, water channels, stairs, slabs, fences, lamps, lightning rods, service paths, and compact maintenance buildings. The long span should make the note identifiable as the infrastructure note.
 
-Iron appears throughout as supporting rails, tools, fastenings, hoppers, and structural frames.
+Transport, water, lighting, and maintenance functions run through or alongside the span. Smelting or preparation areas may occupy one approach. Keep the surrounding settlement limited and subordinate.
+
+Use visible orange-to-green copper ageing across roofs, housings, and exposed sections. A spyglass or archaeological brush may appear as small secondary canonical objects.
+
+Do not expand the scene into a generic city merely to include every historical use of copper.
 
 ### 5.9 €100 emerald recto
 
@@ -161,11 +215,15 @@ The pale label contains one canonical emerald-ore block.
 
 ### 5.10 €100 emerald verso
 
-Show a prosperous Minecraft market town organised around a broad public square.
+Show a developed Minecraft villager market square as the dominant subject.
 
-Include villagers of several professions, farms, workshops, stalls, a library, map room, quarry, roads, bridge, public well, meeting spaces, repair activity, and visible exchanges using emeralds.
+Use recognisable villagers of several professions, profession workstations, a bell, stalls, paths, farms, wells, storage, workshops, houses, and visible exchanges. The scene may be more deliberate than a naturally generated village, but it should remain clearly derived from Minecraft village vocabulary.
 
-Do not use trade-interface boxes, floating offer cards, or a barter timeline.
+Farms, a library, cartography, masonry, smithing, storage, repair, roads, and meeting spaces connect to the square but remain secondary. Emeralds circulate through visible villager trading relationships.
+
+Do not use trade-interface boxes, floating offer cards, symbolic scales, or a barter timeline.
+
+Do not turn the square into a generic medieval fantasy bazaar.
 
 ### 5.11 €200 gold recto
 
@@ -179,11 +237,17 @@ The pale label contains one canonical gold-ore block.
 
 ### 5.12 €200 gold verso
 
-Show the broadest Minecraft civic panorama in the series.
+Show a fortified Minecraft reserve and storage complex as the dominant subject.
 
-Include an assay and reserve district, a controlled vault, powered rail transport used within the city, clock hall, observatory, maps and instruments, treatment garden with brewing stands and golden apples, a civic beacon, public square, scientific uses, and a balanced piglin exchange area reached through a Nether portal.
+Build the scene from recognisable gold blocks and ingots, chests or barrels, secure storage rooms, powered rails, minecarts, clocks, a beacon, furnaces or smithing areas, brewing stands, golden apples, and a controlled Nether portal.
 
-The vault must read as an institutional reserve rather than a treasure hoard.
+These elements should collectively imply a treasury or reserve institution. Do not begin with a monumental bank or palace and merely render it in blocks.
+
+Powered rails connect storage to transport. Clocks and observation support coordination. Brewing equipment and golden food provide a limited treatment layer. The beacon forms a clear vertical accent attached to the reserve complex.
+
+A balanced piglin exchange area may appear near the portal, but it remains subordinate to the reserve complex.
+
+Keep the supporting civic environment compact. Suggest gold's wider meanings through a few strong canonical uses rather than an entire fantasy city.
 
 ## 6. Final one-pass check
 
@@ -199,6 +263,9 @@ Before returning the twelve images, verify that:
 - no verso contains a recipe strip, arrows, or a forced process band;
 - Minecraft is recognised through textures, terrain, objects, and mechanics rather than continuous cube outlines;
 - no image resembles a generic voxel-fantasy game;
+- all twelve plates share the same broad rendering language, texture sharpness, edge behaviour, lighting naturalism, and level of detail;
+- no denomination drifts into a different illustration style;
+- rectos and versos remain recognisably Minecraft even when the banknote frame is mentally removed;
 - colours remain mildly saturated;
 - map geometry and institutional placement remain consistent;
 - all required lettering uses the same Minecraft-derived pixel system;
