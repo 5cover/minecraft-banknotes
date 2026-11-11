@@ -17,6 +17,8 @@ const sides = ['recto', 'verso'] as const;
 const ratioTolerance = 0.005;
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const overlayPath = resolve(scriptDir, '../commons/ai-generated-black-transparent.svg');
+const sheetWidth = 1800;
+const sheetHeight = 1100;
 
 type Options = { maxSize: string; scale: string; overlayWidth: string };
 
@@ -31,6 +33,45 @@ function bytesFromSize(value: string): number {
   if (!match) throw new Error('max-size must be a number optionally followed by B, KB, or MB');
   const unit = (match[2] ?? 'b').toLowerCase();
   return Number(match[1]) * ({ b: 1, kb: 1024, mb: 1024 * 1024 }[unit] ?? 1);
+}
+
+async function buildContactSheet(images: Array<{ target: string; output: Buffer }>, maxBytes: number): Promise<Buffer> {
+  const columns = denominations.length;
+  const left = 36;
+  const top = 132;
+  const columnWidth = (sheetWidth - left * 2) / columns;
+  const rowHeight = 455;
+  const thumbWidth = columnWidth - 20;
+  const thumbHeight = 292;
+  const text = denominations.map(({ value }, index) => {
+    const x = Math.round(left + index * columnWidth + 6);
+    const label = `€${Number(value)} banknote`;
+    return `<text x="${x}" y="92" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#17394a">${label}</text>`;
+  }).join('');
+  const sideLabels = `<text x="36" y="${top + 22}" font-family="Arial, sans-serif" font-size="19" fill="#41616d">RECTO</text><text x="36" y="${top + rowHeight + 22}" font-family="Arial, sans-serif" font-size="19" fill="#41616d">VERSO</text>`;
+  const background = Buffer.from(`<svg width="${sheetWidth}" height="${sheetHeight}" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#eaf3f2"/><text x="36" y="48" font-family="Arial, sans-serif" font-size="18" letter-spacing="3" fill="#41616d">BANKNOTE SERIES</text><text x="36" y="79" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#17394a">Complete series overview</text>${text}${sideLabels}</svg>`);
+  const composites = [] as Array<{ input: Buffer; left: number; top: number }>;
+  for (let index = 0; index < images.length; index += 1) {
+    const column = Math.floor(index / 2);
+    const row = index % 2;
+    const thumbnail = await sharp(images[index].output)
+      .resize({ width: thumbWidth, height: thumbHeight, fit: 'contain', background: '#ffffff' })
+      .png()
+      .toBuffer();
+    composites.push({
+      input: thumbnail,
+      left: Math.round(left + column * columnWidth + (columnWidth - thumbWidth) / 2),
+      top: top + row * rowHeight + 54,
+    });
+  }
+  let quality = 88;
+  let output = await sharp(background).composite(composites).webp({ quality, effort: 6 }).toBuffer();
+  while (output.byteLength > maxBytes && quality > 20) {
+    quality -= 5;
+    output = await sharp(background).composite(composites).webp({ quality, effort: 6 }).toBuffer();
+  }
+  if (output.byteLength > maxBytes) throw new Error(`contact-sheet.webp is still ${output.byteLength} bytes at quality 20; increase --max-size`);
+  return output;
 }
 
 const cli = cac('build-banknote-series');
@@ -90,11 +131,14 @@ cli.command('<directory>', 'Validate and prepare a banknote series')
         if (output.byteLength > maxBytes) throw new Error(`${job.target} is still ${output.byteLength} bytes at quality 20; reduce --scale or increase --max-size`);
         prepared.push({ target: job.target, output });
       }
+      const contactSheet = await buildContactSheet(prepared, maxBytes);
       await mkdir(outputDir, { recursive: true });
       for (const { target, output } of prepared) {
         await writeFile(resolve(outputDir, target), output);
         console.log(`${target} (${output.byteLength} bytes)`);
       }
+      await writeFile(resolve(outputDir, 'contact-sheet.webp'), contactSheet);
+      console.log(`contact-sheet.webp (${contactSheet.byteLength} bytes)`);
       console.log(`Prepared ${validated.length} notes in ${outputDir}`);
     } catch (error) {
       console.error(`Error: ${error instanceof Error ? error.message : String(error)}`);
