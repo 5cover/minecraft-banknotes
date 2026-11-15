@@ -1,0 +1,215 @@
+generator: Built-in image generation; prompts in prompts/. No seed exposed.
+rebuild: Retained image pixels plus deterministic Python composition; image regeneration
+  is not deterministic.
+source_assets:
+  ore_rasters: assets/supplied/inputs/ores/
+  font: assets/supplied/inputs/Minecraft.ttf
+  map: assets/supplied/europe-map.svg
+  flag: assets/supplied/europe-flag.svg
+approved_asset_changes:
+  font: Eight required capitals added with distinct Unicode entries; seven source-outline
+    matches and a new grid-drawn omega. Existing glyphs and mappings preserved. See
+    scripts/build_type_assets.py.
+  type: Outlined SVG denominations fitted to controlled monetary boxes. Three-script
+    block grouped at equal cap height.
+  ore: Transparent-bound crop and common fit; original pixels and pose retained; no
+    generated replacement.
+  map: Unchanged SVG geometry; denomination-ink fill and uniform 70 percent alpha
+    at composition.
+  flag: Unchanged geometry and colours; 92 percent opacity at composition.
+  scene: Recorded fitted crop plus edge-pixel extension hidden under frame.
+  finish: Feathered script underprint and seeded fine paper grain.
+designs:
+  EUR005_recto:
+    primary_source_and_selected: generated/primary/EUR005_recto_primary.png
+    primary_prompt: prompts/EUR005_recto_primary.txt
+    crop: layout.yaml designs.EUR005_recto
+    positioned_context: generated/contexts/EUR005_recto_context.png
+    artwork_source_and_selected: generated/monetary_artwork/EUR005_recto_artwork.png
+    artwork_prompt: prompts/EUR005_recto_artwork.txt
+    artwork_input_references:
+      planning_context: generated/contexts/EUR005_recto_context.png
+    artwork_original_size:
+    - 1746
+    - 901
+    artwork_alpha: Native transparent alpha retained; no extraction.
+    review: Assistant visual review of scene family, composed notes and series contact
+      sheet.
+  EUR005_verso:
+    primary_source_and_selected: generated/primary/EUR005_verso_primary.png
+    primary_prompt: prompts/EUR005_verso_primary.txt
+    crop: layout.yaml designs.EUR005_verso
+    positioned_context: generated/contexts/EUR005_verso_context.png
+    artwork_source_and_selected: generated/monetary_artwork/EUR005_verso_artwork.png
+    artwork_prompt: prompts/EUR005_verso_artwork.txt
+    artwork_input_references:
+      planning_context: generated/contexts/EUR005_verso_context.png
+    artwork_original_size:
+    - 1745
+    - 901
+    artwork_alpha: Native transparent alpha retained; no extraction.
+    review: Assistant visual review of scene family, composed notes and series contact
+      sheet.
+  EUR010_recto:
+    primary_source_and_selected: generated/primary/EUR010_recto_primary.png
+    primary_prompt: prompts/EUR010_recto_primary.txt
+    crop: layout.yaml designs.EUR010_recto
+    positioned_context: generated/contexts/EUR010_recto_context.png
+    artwork_source_and_selected: generated/monetary_artwork/EUR010_recto_artwork.png
+    artwork_prompt: prompts/EUR010_recto_artwork.txt
+    artwork_input_references:
+      planning_context: generated/contexts/EUR010_recto_context.png
+    artwork_original_size:
+    - 1728
+    - 910
+    artwork_alpha: Native transparent alpha retained; no extraction.
+    review: Assistant visual review of scene family, composed notes and series contact
+      sheet.
+  EUR010_verso:
+    primary_source_and_selected: generated/primary/EUR010_verso_primary.png
+    primary_prompt: prompts/EUR010_verso_primary.txt
+    crop: layout.yaml designs.EUR010_verso
+    positioned_context: generated/contexts/EUR010_verso_context.png
+    artwork_source_and_selected: generated/monetary_artwork/EUR010_verso_artwork.png
+    artwork_prompt: prompts/EUR010_verso_artwork.txt
+    artwork_input_references:
+      planning_context: generated/contexts/EUR010_verso_context.png
+    artwork_original_size:
+    - 1727
+    - 910
+    artwork_alpha: Native transparent alpha retained; no extraction.
+    review: Assistant visual review of scene family, composed notes and series contact
+      sheet.
+  EUR020_recto:
+    primary_source_and_selected: generated/primary/EUR020_recto_primary.png
+    primary_prompt: prompts/EUR020_recto_primary.txt
+    crop: layout.yaml designs.EUR020_recto
+    positioned_context: generated/contexts/EUR020_recto_context.png
+    artwork_source_and_selected: generated/monetary_artwork/EUR020_recto_artwork.png
+    artwork_prompt: prompts/EUR020_recto_artwork.txt
+    artwork_input_references:
+      planning_context: generated/contexts/EUR020_recto_context.png
+    artwork_original_size:
+    - 1705
+    - 923
+    artwork_alpha: Native transparent alpha retained; no extraction.
+    review: Assistant visual review of scene family, composed notes and series contact
+      sheet.
+  EUR020_verso:
+    primary_source_and_selected: generated/primary/EUR020_verso_primary.png
+    primary_prompt: prompts/EUR020_verso_primary.txt
+    crop: layout.yaml designs.EUR020_verso
+    positioned_context: generated/contexts/EUR020_verso_context.png
+    artwork_source_and_selected: generated/monetary_artwork/EUR020_verso_artwork.png
+    artwork_prompt: prompts/EUR020_verso_artwork.txt
+    artwork_input_references:
+      planning_context: generated/contexts/EUR020_verso_context.png
+    artwork_original_size:
+    - 1704
+    - 923
+    artwork_alpha: Native transparent alpha retained; no extraction.
+    review: Assistant visual review of scene family, composed notes and series contact
+      sheet.
+  EUR050_recto:
+    primary_source_and_selected: generated/primary/EUR050_recto_primary.png
+    primary_prompt: prompts/EUR050_recto_primary.txt
+    crop: layout.yaml designs.EUR050_recto
+    positioned_context: generated/contexts/EUR050_recto_context.png
+    artwork_source_and_selected: generated/monetary_artwork/EUR050_recto_artwork.png
+    artwork_prompt: prompts/EUR050_recto_artwork.txt
+    artwork_input_references:
+      planning_context: generated/contexts/EUR050_recto_context.png
+    artwork_original_size:
+    - 1691
+    - 930
+    artwork_alpha: Native transparent alpha retained; no extraction.
+    review: Assistant visual review of scene family, composed notes and series contact
+      sheet.
+  EUR050_verso:
+    primary_source_and_selected: generated/primary/EUR050_verso_primary.png
+    primary_prompt: prompts/EUR050_verso_primary.txt
+    crop: layout.yaml designs.EUR050_verso
+    positioned_context: generated/contexts/EUR050_verso_context.png
+    artwork_source_and_selected: generated/monetary_artwork/EUR050_verso_artwork.png
+    artwork_prompt: prompts/EUR050_verso_artwork.txt
+    artwork_input_references:
+      planning_context: generated/contexts/EUR050_verso_context.png
+    artwork_original_size:
+    - 1691
+    - 930
+    artwork_alpha: Native transparent alpha retained; no extraction.
+    review: Assistant visual review of scene family, composed notes and series contact
+      sheet.
+  EUR100_recto:
+    primary_source_and_selected: generated/primary/EUR100_recto_primary.png
+    primary_prompt: prompts/EUR100_recto_primary.txt
+    crop: layout.yaml designs.EUR100_recto
+    positioned_context: generated/contexts/EUR100_recto_context.png
+    artwork_source_and_selected: generated/monetary_artwork/EUR100_recto_artwork.png
+    artwork_prompt: prompts/EUR100_recto_artwork.txt
+    artwork_input_references:
+      planning_context: generated/contexts/EUR100_recto_context.png
+    artwork_original_size:
+    - 1679
+    - 937
+    artwork_alpha: Native transparent alpha retained; no extraction.
+    review: Assistant visual review of scene family, composed notes and series contact
+      sheet.
+  EUR100_verso:
+    primary_source_and_selected: generated/primary/EUR100_verso_primary.png
+    primary_prompt: prompts/EUR100_verso_primary.txt
+    crop: layout.yaml designs.EUR100_verso
+    positioned_context: generated/contexts/EUR100_verso_context.png
+    artwork_source_and_selected: generated/monetary_artwork/EUR100_verso_artwork.png
+    artwork_prompt: prompts/EUR100_verso_artwork.txt
+    artwork_input_references:
+      planning_context: generated/contexts/EUR100_verso_context.png
+    artwork_original_size:
+    - 1679
+    - 937
+    artwork_alpha: Native transparent alpha retained; no extraction.
+    review: Assistant visual review of scene family, composed notes and series contact
+      sheet.
+  EUR200_recto:
+    primary_source_and_selected: generated/primary/EUR200_recto_primary.png
+    primary_prompt: prompts/EUR200_recto_primary.txt
+    crop: layout.yaml designs.EUR200_recto
+    positioned_context: generated/contexts/EUR200_recto_context.png
+    artwork_source_and_selected: generated/monetary_artwork/EUR200_recto_artwork.png
+    artwork_prompt: prompts/EUR200_recto_artwork.txt
+    artwork_input_references:
+      planning_context: generated/contexts/EUR200_recto_context.png
+    artwork_original_size:
+    - 1713
+    - 918
+    artwork_alpha: Native transparent alpha retained; no extraction.
+    review: Assistant visual review of scene family, composed notes and series contact
+      sheet.
+  EUR200_verso:
+    primary_source_and_selected: generated/primary/EUR200_verso_primary.png
+    primary_prompt: prompts/EUR200_verso_primary.txt
+    crop: layout.yaml designs.EUR200_verso
+    positioned_context: generated/contexts/EUR200_verso_context.png
+    artwork_source_and_selected: generated/monetary_artwork/EUR200_verso_artwork.png
+    artwork_prompt: prompts/EUR200_verso_artwork.txt
+    artwork_input_references:
+      planning_context: generated/contexts/EUR200_verso_context.png
+    artwork_original_size:
+    - 1713
+    - 918
+    artwork_alpha: Native transparent alpha retained; no extraction.
+    review: Assistant visual review of scene family, composed notes and series contact
+      sheet.
+build_environment:
+  python_dependencies:
+    Pillow: 13.0.0
+    fonttools: 4.61.1
+    PyYAML: 6.0.3
+    numpy: 2.3.5
+  vector_renderer: Inkscape 1.4 (e7c3feb100, 2024-10-09)
+validation:
+  final_notes: All twelve exact dimensions and byte-identical deterministic rebuilds
+    verified.
+  contexts: All twelve retained generation contexts reproduced identically.
+  font: All original outlines, advance widths and Unicode mappings preserved; eight
+    required capitals added.

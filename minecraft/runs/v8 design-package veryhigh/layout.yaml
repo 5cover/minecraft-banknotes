@@ -1,0 +1,855 @@
+coordinates: normalized xywh boxes; sizes in final pixels
+z_order:
+- paper and positioned primary
+- generated monetary artwork
+- feathered paper underprint beneath script group
+- ore insert on recto
+- outlined values and grouped scripts
+- flag and map
+- signature reservation and tactile concept
+- seeded paper grain
+designs:
+  EUR005_recto:
+    value: 5
+    side: recto
+    size: &id001
+    - 1800
+    - 930
+    export: outputs/notes/EUR005_recto.png
+    paper: '#edece4'
+    ink: '#303b3c'
+    texture_seed: 5
+    art_direction: Graphite grey; geological strata and coal speck rhythm; sedimentary
+      hatch
+    primary: generated/primary/EUR005_recto_primary.png
+    primary_box:
+    - 0.185
+    - 0.075
+    - 0.655
+    - 0.85
+    crop_center:
+    - 0.5
+    - 0.5
+    artwork: generated/monetary_artwork/EUR005_recto_artwork.png
+    context: generated/contexts/EUR005_recto_context.png
+    fixed:
+      value:
+      - 0.045
+      - 0.145
+      - 0.133
+      - 0.24
+      repeat:
+      - 0.06
+      - 0.825
+      - 0.065
+      - 0.066
+      scripts:
+      - 0.875
+      - 0.27
+      - 0.092
+      - 0.22
+      flag:
+      - 0.886
+      - 0.11
+      - 0.073
+      - 0.095
+      map:
+      - 0.842
+      - 0.665
+      - 0.133
+      - 0.195
+    signature_box:
+    - 0.865
+    - 0.57
+    - 0.1
+    - 0.018
+    ore: assets/supplied/inputs/ores/coal.webp
+    ore_box:
+    - 0.735
+    - 0.425
+    - 0.093
+    - 0.195
+    label_center:
+    - 0.782
+    - 0.525
+    label_diameter_height: 0.345
+    tactile_groups: 1
+    edge_extension:
+    - 0.035
+    - 0.025
+    context_edge_extension:
+    - 0
+    - 0
+  EUR005_verso:
+    value: 5
+    side: verso
+    size: *id001
+    export: outputs/notes/EUR005_verso.png
+    paper: '#edece4'
+    ink: '#303b3c'
+    texture_seed: 5
+    art_direction: Graphite grey; geological strata and coal speck rhythm; sedimentary
+      hatch
+    primary: generated/primary/EUR005_verso_primary.png
+    primary_box:
+    - 0.185
+    - 0.075
+    - 0.655
+    - 0.85
+    crop_center:
+    - 0.5
+    - 0.5
+    artwork: generated/monetary_artwork/EUR005_verso_artwork.png
+    context: generated/contexts/EUR005_verso_context.png
+    fixed:
+      value:
+      - 0.045
+      - 0.145
+      - 0.133
+      - 0.24
+      repeat:
+      - 0.06
+      - 0.825
+      - 0.065
+      - 0.066
+      scripts:
+      - 0.875
+      - 0.27
+      - 0.092
+      - 0.22
+      flag:
+      - 0.886
+      - 0.11
+      - 0.073
+      - 0.095
+      map:
+      - 0.842
+      - 0.665
+      - 0.133
+      - 0.195
+    signature_box:
+    - 0.865
+    - 0.57
+    - 0.1
+    - 0.018
+    ore: assets/supplied/inputs/ores/coal.webp
+    ore_box:
+    - 0.735
+    - 0.425
+    - 0.093
+    - 0.195
+    label_center:
+    - 0.782
+    - 0.525
+    label_diameter_height: 0.345
+    tactile_groups: 1
+    edge_extension:
+    - 0.035
+    - 0.025
+    context_edge_extension:
+    - 0
+    - 0
+  EUR010_recto:
+    value: 10
+    side: recto
+    size: &id002
+    - 1778
+    - 938
+    export: outputs/notes/EUR010_recto.png
+    paper: '#eee4e0'
+    ink: '#672e36'
+    texture_seed: 10
+    art_direction: Oxidised red, burgundy; branching signal geometry and faint signal
+      traces
+    primary: generated/primary/EUR010_recto_primary.png
+    primary_box:
+    - 0.185
+    - 0.075
+    - 0.655
+    - 0.85
+    crop_center:
+    - 0.5
+    - 0.5
+    artwork: generated/monetary_artwork/EUR010_recto_artwork.png
+    context: generated/contexts/EUR010_recto_context.png
+    fixed:
+      value:
+      - 0.045
+      - 0.145
+      - 0.133
+      - 0.24
+      repeat:
+      - 0.06
+      - 0.825
+      - 0.065
+      - 0.066
+      scripts:
+      - 0.875
+      - 0.27
+      - 0.092
+      - 0.22
+      flag:
+      - 0.886
+      - 0.11
+      - 0.073
+      - 0.095
+      map:
+      - 0.842
+      - 0.665
+      - 0.133
+      - 0.195
+    signature_box:
+    - 0.865
+    - 0.57
+    - 0.1
+    - 0.018
+    ore: assets/supplied/inputs/ores/redstone.webp
+    ore_box:
+    - 0.735
+    - 0.425
+    - 0.093
+    - 0.195
+    label_center:
+    - 0.782
+    - 0.525
+    label_diameter_height: 0.345
+    tactile_groups: 2
+    edge_extension:
+    - 0.035
+    - 0.025
+    context_edge_extension:
+    - 0
+    - 0
+  EUR010_verso:
+    value: 10
+    side: verso
+    size: *id002
+    export: outputs/notes/EUR010_verso.png
+    paper: '#eee4e0'
+    ink: '#672e36'
+    texture_seed: 10
+    art_direction: Oxidised red, burgundy; branching signal geometry and faint signal
+      traces
+    primary: generated/primary/EUR010_verso_primary.png
+    primary_box:
+    - 0.185
+    - 0.075
+    - 0.655
+    - 0.85
+    crop_center:
+    - 0.5
+    - 0.5
+    artwork: generated/monetary_artwork/EUR010_verso_artwork.png
+    context: generated/contexts/EUR010_verso_context.png
+    fixed:
+      value:
+      - 0.045
+      - 0.145
+      - 0.133
+      - 0.24
+      repeat:
+      - 0.06
+      - 0.825
+      - 0.065
+      - 0.066
+      scripts:
+      - 0.875
+      - 0.27
+      - 0.092
+      - 0.22
+      flag:
+      - 0.886
+      - 0.11
+      - 0.073
+      - 0.095
+      map:
+      - 0.842
+      - 0.665
+      - 0.133
+      - 0.195
+    signature_box:
+    - 0.865
+    - 0.57
+    - 0.1
+    - 0.018
+    ore: assets/supplied/inputs/ores/redstone.webp
+    ore_box:
+    - 0.735
+    - 0.425
+    - 0.093
+    - 0.195
+    label_center:
+    - 0.782
+    - 0.525
+    label_diameter_height: 0.345
+    tactile_groups: 2
+    edge_extension:
+    - 0.035
+    - 0.025
+    context_edge_extension:
+    - 0
+    - 0
+  EUR020_recto:
+    value: 20
+    side: recto
+    size: &id003
+    - 1729
+    - 936
+    export: outputs/notes/EUR020_recto.png
+    paper: '#e8e9e7'
+    ink: '#304a69'
+    texture_seed: 20
+    art_direction: Weathered ultramarine, parchment, slate; manuscript ruling and
+      pigment grain
+    primary: generated/primary/EUR020_recto_primary.png
+    primary_box:
+    - 0.185
+    - 0.075
+    - 0.655
+    - 0.85
+    crop_center:
+    - 0.5
+    - 0.5
+    artwork: generated/monetary_artwork/EUR020_recto_artwork.png
+    context: generated/contexts/EUR020_recto_context.png
+    fixed:
+      value:
+      - 0.045
+      - 0.145
+      - 0.133
+      - 0.24
+      repeat:
+      - 0.06
+      - 0.825
+      - 0.065
+      - 0.066
+      scripts:
+      - 0.875
+      - 0.27
+      - 0.092
+      - 0.22
+      flag:
+      - 0.886
+      - 0.11
+      - 0.073
+      - 0.095
+      map:
+      - 0.842
+      - 0.665
+      - 0.133
+      - 0.195
+    signature_box:
+    - 0.865
+    - 0.57
+    - 0.1
+    - 0.018
+    ore: assets/supplied/inputs/ores/lapis.webp
+    ore_box:
+    - 0.735
+    - 0.425
+    - 0.093
+    - 0.195
+    label_center:
+    - 0.782
+    - 0.525
+    label_diameter_height: 0.345
+    tactile_groups: 3
+    edge_extension:
+    - 0.035
+    - 0.025
+    context_edge_extension:
+    - 0
+    - 0
+  EUR020_verso:
+    value: 20
+    side: verso
+    size: *id003
+    export: outputs/notes/EUR020_verso.png
+    paper: '#e8e9e7'
+    ink: '#304a69'
+    texture_seed: 20
+    art_direction: Weathered ultramarine, parchment, slate; manuscript ruling and
+      pigment grain
+    primary: generated/primary/EUR020_verso_primary.png
+    primary_box:
+    - 0.185
+    - 0.075
+    - 0.655
+    - 0.85
+    crop_center:
+    - 0.5
+    - 0.5
+    artwork: generated/monetary_artwork/EUR020_verso_artwork.png
+    context: generated/contexts/EUR020_verso_context.png
+    fixed:
+      value:
+      - 0.045
+      - 0.145
+      - 0.133
+      - 0.24
+      repeat:
+      - 0.06
+      - 0.825
+      - 0.065
+      - 0.066
+      scripts:
+      - 0.875
+      - 0.27
+      - 0.092
+      - 0.22
+      flag:
+      - 0.886
+      - 0.11
+      - 0.073
+      - 0.095
+      map:
+      - 0.842
+      - 0.665
+      - 0.133
+      - 0.195
+    signature_box:
+    - 0.865
+    - 0.57
+    - 0.1
+    - 0.018
+    ore: assets/supplied/inputs/ores/lapis.webp
+    ore_box:
+    - 0.735
+    - 0.425
+    - 0.093
+    - 0.195
+    label_center:
+    - 0.782
+    - 0.525
+    label_diameter_height: 0.345
+    tactile_groups: 3
+    edge_extension:
+    - 0.035
+    - 0.025
+    context_edge_extension:
+    - 0
+    - 0
+  EUR050_recto:
+    value: 50
+    side: recto
+    size: &id004
+    - 1700
+    - 935
+    export: outputs/notes/EUR050_recto.png
+    paper: '#eee5d6'
+    ink: '#75492f'
+    texture_seed: 50
+    art_direction: Aged copper orange, umber, limited verdigris; conductive bands,
+      oxidation fields, fine conductive mesh
+    primary: generated/primary/EUR050_recto_primary.png
+    primary_box:
+    - 0.185
+    - 0.075
+    - 0.655
+    - 0.85
+    crop_center:
+    - 0.5
+    - 0.5
+    artwork: generated/monetary_artwork/EUR050_recto_artwork.png
+    context: generated/contexts/EUR050_recto_context.png
+    fixed:
+      value:
+      - 0.045
+      - 0.145
+      - 0.133
+      - 0.24
+      repeat:
+      - 0.06
+      - 0.825
+      - 0.065
+      - 0.066
+      scripts:
+      - 0.875
+      - 0.27
+      - 0.092
+      - 0.22
+      flag:
+      - 0.886
+      - 0.11
+      - 0.073
+      - 0.095
+      map:
+      - 0.842
+      - 0.665
+      - 0.133
+      - 0.195
+    signature_box:
+    - 0.865
+    - 0.57
+    - 0.1
+    - 0.018
+    ore: assets/supplied/inputs/ores/copper.webp
+    ore_box:
+    - 0.735
+    - 0.425
+    - 0.093
+    - 0.195
+    label_center:
+    - 0.782
+    - 0.525
+    label_diameter_height: 0.345
+    tactile_groups: 4
+    edge_extension:
+    - 0.035
+    - 0.025
+    context_edge_extension:
+    - 0
+    - 0
+  EUR050_verso:
+    value: 50
+    side: verso
+    size: *id004
+    export: outputs/notes/EUR050_verso.png
+    paper: '#eee5d6'
+    ink: '#75492f'
+    texture_seed: 50
+    art_direction: Aged copper orange, umber, limited verdigris; conductive bands,
+      oxidation fields, fine conductive mesh
+    primary: generated/primary/EUR050_verso_primary.png
+    primary_box:
+    - 0.185
+    - 0.075
+    - 0.655
+    - 0.85
+    crop_center:
+    - 0.5
+    - 0.5
+    artwork: generated/monetary_artwork/EUR050_verso_artwork.png
+    context: generated/contexts/EUR050_verso_context.png
+    fixed:
+      value:
+      - 0.045
+      - 0.145
+      - 0.133
+      - 0.24
+      repeat:
+      - 0.06
+      - 0.825
+      - 0.065
+      - 0.066
+      scripts:
+      - 0.875
+      - 0.27
+      - 0.092
+      - 0.22
+      flag:
+      - 0.886
+      - 0.11
+      - 0.073
+      - 0.095
+      map:
+      - 0.842
+      - 0.665
+      - 0.133
+      - 0.195
+    signature_box:
+    - 0.865
+    - 0.57
+    - 0.1
+    - 0.018
+    ore: assets/supplied/inputs/ores/copper.webp
+    ore_box:
+    - 0.735
+    - 0.425
+    - 0.093
+    - 0.195
+    label_center:
+    - 0.782
+    - 0.525
+    label_diameter_height: 0.345
+    tactile_groups: 4
+    edge_extension:
+    - 0.035
+    - 0.025
+    context_edge_extension:
+    - 0
+    - 0
+  EUR100_recto:
+    value: 100
+    side: recto
+    size: &id005
+    - 1617
+    - 902
+    export: outputs/notes/EUR100_recto.png
+    paper: '#e5ebe1'
+    ink: '#2c5143'
+    texture_seed: 100
+    art_direction: Mineral green forest green stone; interlocking exchange lattice
+      and market paving
+    primary: generated/primary/EUR100_recto_primary.png
+    primary_box:
+    - 0.185
+    - 0.075
+    - 0.655
+    - 0.85
+    crop_center:
+    - 0.5
+    - 0.5
+    artwork: generated/monetary_artwork/EUR100_recto_artwork.png
+    context: generated/contexts/EUR100_recto_context.png
+    fixed:
+      value:
+      - 0.045
+      - 0.145
+      - 0.133
+      - 0.24
+      repeat:
+      - 0.06
+      - 0.825
+      - 0.065
+      - 0.066
+      scripts:
+      - 0.875
+      - 0.27
+      - 0.092
+      - 0.22
+      flag:
+      - 0.886
+      - 0.11
+      - 0.073
+      - 0.095
+      map:
+      - 0.842
+      - 0.665
+      - 0.133
+      - 0.195
+    signature_box:
+    - 0.865
+    - 0.57
+    - 0.1
+    - 0.018
+    ore: assets/supplied/inputs/ores/emerald.webp
+    ore_box:
+    - 0.735
+    - 0.425
+    - 0.093
+    - 0.195
+    label_center:
+    - 0.782
+    - 0.525
+    label_diameter_height: 0.345
+    tactile_groups: 5
+    edge_extension:
+    - 0.035
+    - 0.025
+    context_edge_extension:
+    - 0
+    - 0
+  EUR100_verso:
+    value: 100
+    side: verso
+    size: *id005
+    export: outputs/notes/EUR100_verso.png
+    paper: '#e5ebe1'
+    ink: '#2c5143'
+    texture_seed: 100
+    art_direction: Mineral green forest green stone; interlocking exchange lattice
+      and market paving
+    primary: generated/primary/EUR100_verso_primary.png
+    primary_box:
+    - 0.185
+    - 0.075
+    - 0.655
+    - 0.85
+    crop_center:
+    - 0.5
+    - 0.5
+    artwork: generated/monetary_artwork/EUR100_verso_artwork.png
+    context: generated/contexts/EUR100_verso_context.png
+    fixed:
+      value:
+      - 0.045
+      - 0.145
+      - 0.133
+      - 0.24
+      repeat:
+      - 0.06
+      - 0.825
+      - 0.065
+      - 0.066
+      scripts:
+      - 0.875
+      - 0.27
+      - 0.092
+      - 0.22
+      flag:
+      - 0.886
+      - 0.11
+      - 0.073
+      - 0.095
+      map:
+      - 0.842
+      - 0.665
+      - 0.133
+      - 0.195
+    signature_box:
+    - 0.865
+    - 0.57
+    - 0.1
+    - 0.018
+    ore: assets/supplied/inputs/ores/emerald.webp
+    ore_box:
+    - 0.735
+    - 0.425
+    - 0.093
+    - 0.195
+    label_center:
+    - 0.782
+    - 0.525
+    label_diameter_height: 0.345
+    tactile_groups: 5
+    edge_extension:
+    - 0.035
+    - 0.025
+    context_edge_extension:
+    - 0
+    - 0
+  EUR200_recto:
+    value: 200
+    side: recto
+    size: &id006
+    - 1683
+    - 902
+    export: outputs/notes/EUR200_recto.png
+    paper: '#eee5cf'
+    ink: '#785b30'
+    texture_seed: 200
+    art_direction: Antique gold ochre terracotta dark brown; concentric reserve rings
+      and measured gold facets
+    primary: generated/primary/EUR200_recto_primary.png
+    primary_box:
+    - 0.185
+    - 0.075
+    - 0.655
+    - 0.85
+    crop_center:
+    - 0.5
+    - 0.5
+    artwork: generated/monetary_artwork/EUR200_recto_artwork.png
+    context: generated/contexts/EUR200_recto_context.png
+    fixed:
+      value:
+      - 0.045
+      - 0.145
+      - 0.133
+      - 0.24
+      repeat:
+      - 0.06
+      - 0.825
+      - 0.065
+      - 0.066
+      scripts:
+      - 0.875
+      - 0.27
+      - 0.092
+      - 0.22
+      flag:
+      - 0.886
+      - 0.11
+      - 0.073
+      - 0.095
+      map:
+      - 0.842
+      - 0.665
+      - 0.133
+      - 0.195
+    signature_box:
+    - 0.865
+    - 0.57
+    - 0.1
+    - 0.018
+    ore: assets/supplied/inputs/ores/gold.webp
+    ore_box:
+    - 0.735
+    - 0.425
+    - 0.093
+    - 0.195
+    label_center:
+    - 0.782
+    - 0.525
+    label_diameter_height: 0.345
+    tactile_groups: 6
+    edge_extension:
+    - 0.035
+    - 0.025
+    context_edge_extension:
+    - 0
+    - 0
+  EUR200_verso:
+    value: 200
+    side: verso
+    size: *id006
+    export: outputs/notes/EUR200_verso.png
+    paper: '#eee5cf'
+    ink: '#785b30'
+    texture_seed: 200
+    art_direction: Antique gold ochre terracotta dark brown; concentric reserve rings
+      and measured gold facets
+    primary: generated/primary/EUR200_verso_primary.png
+    primary_box:
+    - 0.185
+    - 0.075
+    - 0.655
+    - 0.85
+    crop_center:
+    - 0.5
+    - 0.5
+    artwork: generated/monetary_artwork/EUR200_verso_artwork.png
+    context: generated/contexts/EUR200_verso_context.png
+    fixed:
+      value:
+      - 0.045
+      - 0.145
+      - 0.133
+      - 0.24
+      repeat:
+      - 0.06
+      - 0.825
+      - 0.065
+      - 0.066
+      scripts:
+      - 0.875
+      - 0.27
+      - 0.092
+      - 0.22
+      flag:
+      - 0.886
+      - 0.11
+      - 0.073
+      - 0.095
+      map:
+      - 0.842
+      - 0.665
+      - 0.133
+      - 0.195
+    signature_box:
+    - 0.865
+    - 0.57
+    - 0.1
+    - 0.018
+    ore: assets/supplied/inputs/ores/gold.webp
+    ore_box:
+    - 0.735
+    - 0.425
+    - 0.093
+    - 0.195
+    label_center:
+    - 0.782
+    - 0.525
+    label_diameter_height: 0.345
+    tactile_groups: 6
+    edge_extension:
+    - 0.035
+    - 0.025
+    context_edge_extension:
+    - 0
+    - 0
+script_underprint:
+  alpha: 110
+  feather_pixels: 10
+  padding_pixels: 5
