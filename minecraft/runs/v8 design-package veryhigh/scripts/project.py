@@ -1,13 +1,16 @@
 from pathlib import Path
+from functools import cache
 import yaml,subprocess,io,hashlib
 import numpy as np
 from PIL import Image,ImageOps,ImageDraw,ImageFilter
 ROOT=Path(__file__).resolve().parents[1]
 LANCZOS=Image.Resampling.LANCZOS
+@cache
 def config():return yaml.safe_load((ROOT/'layout.yaml').read_text())
-def svg(path,width):
+def svg(path,width=None,height=None):
  path=ROOT/path
- r=subprocess.run(['inkscape',str(path),'--export-type=png','--export-filename=-',f'--export-width={width}'],capture_output=True,check=True)
+ dimension=f'--export-width={width}' if width is not None else f'--export-height={height}'
+ r=subprocess.run(['inkscape',str(path),'--export-type=png','--export-filename=-',dimension],capture_output=True,check=True)
  return Image.open(io.BytesIO(r.stdout)).convert('RGBA')
 def box(b,size):return tuple(round(v*size[i%2]) for i,v in enumerate(b))
 def layer(size):return Image.new('RGBA',size)
@@ -24,14 +27,18 @@ def fixed(d,proxy=False):
  for name,b in d['fixed'].items():
   x,y,w,h=box(b,size)
   if proxy:draw.rounded_rectangle((x,y,x+w,y+h),radius=2,fill='#d7c2dd90',outline='#805c8c');continue
-  if name in ['value','repeat']:asset=svg(f"assets/derived/value-{d['value']}.svg",w)
+  if name in ['value','repeat']:
+   target_height=round(config()['value_cap_heights'][name]*size[1]);asset=svg(f"assets/derived/value-{d['value']}.svg",height=target_height)
   elif name=='scripts':asset=svg('assets/derived/euro-scripts.svg',w)
   elif name=='flag':asset=svg('assets/supplied/europe-flag.svg',w);asset.putalpha(asset.getchannel('A').point(lambda a:round(a*.92)))
   elif name=='map':asset=svg('assets/supplied/europe-map.svg',w)
   else:continue
   if name!='flag':
    alpha=asset.getchannel('A');asset=Image.new('RGBA',asset.size,ink);asset.putalpha(alpha.point(lambda a:round(a*(.70 if name=='map' else 1))))
-  put(im,asset,b,contain=name not in ['value','repeat'])
+  if name in ['value','repeat']:
+   if asset.width>w or asset.height>h:raise ValueError(f"{d['value']} {name} does not fit its layout box")
+   im.alpha_composite(asset,(x+(w-asset.width)//2,y))
+  else:put(im,asset,b)
  # Recto insert remains separate from the generated shell.
  if d['side']=='recto':
   b=d['ore_box'];x,y,w,h=box(b,size)
